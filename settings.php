@@ -156,25 +156,6 @@ if ($ADMIN->fulltree) {
        ========================================================================= */
     $page = new admin_settingpage('theme_fng_login', get_string('loginsettings', 'theme_fng'));
 
-    // Imagen de Login
-    $name = 'theme_fng/fng_loginimage';
-    $title = get_string('loginimage', 'theme_fng');
-    $description = get_string('loginimagedesc', 'theme_fng', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fng_loginimage', 0, [
-        'subdirs' => 0,
-        'accepted_types' => 'web_image'
-    ]);
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
-    // Color de Fondo del Login
-    $name = 'theme_fng/fng_loginbg_color';
-    $title = get_string('loginbg_color', 'theme_fng');
-    $description = get_string('loginbg_colordesc', 'theme_fng');
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, '#045091'); // Color azul FNG
-    $setting->set_updatedcallback('theme_reset_all_caches');
-    $page->add($setting);
-
     // Carousel Settings
     $page->add(new admin_setting_heading(
         'theme_fng_carousel',
