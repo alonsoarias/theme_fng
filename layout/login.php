@@ -1,4 +1,27 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * Login page layout for theme_fng.
+ *
+ * @package    theme_fng
+ * @copyright  2025 Soporte fng <soporte@fng.co>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 defined('MOODLE_INTERNAL') || die();
 
 // Obtener atributos del body y la configuración del tema.
@@ -18,36 +41,19 @@ $templatecontext = [
     ),
     'output'           => $OUTPUT,
     'bodyattributes'   => $bodyattributes,
-    'loginbackground'  => '',
     'carouselimages'   => [],
     'carouselinterval' => isset($theme->settings->fng_carouselinterval) ? (int)$theme->settings->fng_carouselinterval : 5000,
     'my_credit'        => get_string('credit', 'theme_fng'),
     'hasgeneralnote'   => false,
     'generalnote'      => '',
     // Variables de control para la visualización
-    'has_loginimage'   => false,
-    'has_loginbgcolor' => false,
     'has_carousel'     => false,
     'multiple_slides'  => false
 ];
 
 
 // =========================================================================
-// 1) Fondo o color del área de login
-// =========================================================================
-$loginimageurl = $theme->setting_file_url('fng_loginimage', 'fng_loginimage');
-if (!empty($loginimageurl)) {
-    $templatecontext['loginbackground'] = "background-image: url('{$loginimageurl}'); background-size: cover; background-position: center;";
-    $templatecontext['has_loginimage'] = true;
-} else {
-    $loginbgcolor = !empty($theme->settings->fng_loginbg_color) ? $theme->settings->fng_loginbg_color : '#045091';
-    $templatecontext['loginbackground'] = "background-color: {$loginbgcolor};";
-    $templatecontext['has_loginbgcolor'] = true;
-}
-
-
-// =========================================================================
-// 2) Carrusel de diapositivas
+// Carrusel de diapositivas
 // =========================================================================
 // Se obtiene el número de slides configurado con el prefijo "fng_".
 $numslides = isset($theme->settings->fng_numberofslides) && is_numeric($theme->settings->fng_numberofslides)
@@ -107,7 +113,7 @@ if (!$templatecontext['has_carousel']) {
     $templatecontext['carouselimages'][] = [
         'url'       => (string)$defaultImage,
         'link'      => '#',
-        'title'     => get_string('default_slide_title', 'theme_fng'),
+        'title'     => get_string('default_slide_title', 'theme_fng', ['fallback' => 'Bienvenido']),
         'has_title' => true,
         'has_link'  => false,
         'first'     => true,
@@ -120,6 +126,6 @@ if (!$templatecontext['has_carousel']) {
 
 
 // =========================================================================
-// 3) Renderizar la plantilla con este contexto
+// Renderizar la plantilla con este contexto
 // =========================================================================
 echo $OUTPUT->render_from_template('theme_fng/core/login-custom', $templatecontext);
