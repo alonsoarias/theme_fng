@@ -41,7 +41,7 @@ div#navbarmenutopic {
 }
 
 #top-footer {
-    background-color: $color-primary; /* Azul oscuro */
+    background-color: $color-primary; /* Azul oscuro FNG */
     color: $color-white;
     margin: 0 -15px;
 }
@@ -66,13 +66,13 @@ div#navbarmenutopic {
 }
 
 .btn-link {
-    color: $color-secondary; /* Azul oscuro */
+    color: $fng-blue-medium; /* Azul medio */
     border-color: $color-primary;
 }
 
 .btn-link:hover {
-    color: $color-primary; /* Rojo */
-    border-color: $color-secondary;
+    color: $color-primary; /* Azul oscuro */
+    border-color: $fng-red;
 }
 
 .btn-outline-primary {
@@ -96,7 +96,7 @@ div#navbarmenutopic {
 }
 
 .badge-info {
-    background-color: $purple;
+    background-color: $fng-blue-medium;
 }
 
 .badge-info:hover {
@@ -105,11 +105,11 @@ div#navbarmenutopic {
 }
 
 .badge-success {
-    background-color: $green;
+    background-color: $fng-orange;
 }
 
 .badge-succes:hover {
-    background-color: darken($green, 10%);
+    background-color: darken($fng-orange, 10%);
 }
 
 /* List and Link Styles */
@@ -154,7 +154,7 @@ div#navbarmenutopic {
 }
 
 .form-autocomplete-suggestions li:hover {
-    background-color: $color-primary; /* Cambiado a $color-primary según botón */
+    background-color: $color-primary; /* Azul oscuro FNG */
     color: $color-white;
     border-left: 4px solid $color-primary;
 }
@@ -181,7 +181,7 @@ div#navbarmenutopic {
         content: '';
         display: block;
         border-top: 8px solid transparent;
-        border-left: 10px solid $color-primary; /* Reemplazado con $color-primary */
+        border-left: 10px solid $color-primary; /* Azul oscuro FNG */
         border-bottom: 8px solid transparent;
         position: absolute;
         top: 50%;
@@ -276,8 +276,8 @@ div#navbarmenutopic {
 
 /* Primary button styling */
 .btn-primary {
-    background-color: $color-secondary; // Rojo para el fondo
-    border-color: $color-secondary; // Rojo para el borde
+    background-color: $fng-red; // Rojo para el fondo
+    border-color: $fng-red; // Rojo para el borde
     color: #ffffff; // Blanco para el texto
 
     .fa,
@@ -295,8 +295,8 @@ div#navbarmenutopic {
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: $color-secondary; // Rojo en activo
-        border-color: $color-secondary; // Rojo en activo
+        background-color: $fng-red; // Rojo en activo
+        border-color: $fng-red; // Rojo en activo
         color: #ffffff; // Blanco en activo
     }
 
@@ -320,8 +320,8 @@ div#navbarmenutopic {
     }
 
     &:hover {
-        background-color: $color-secondary; // Rojo en hover
-        border-color: $color-secondary; // Rojo en hover
+        background-color: $color-secondary; // Naranja en hover
+        border-color: $color-secondary; // Naranja en hover
         color: #ffffff; // Blanco para el texto en hover
     }
 
@@ -336,20 +336,20 @@ div#navbarmenutopic {
 
     &:not(:disabled):not(.disabled):focus,
     &:not(:disabled):not(.disabled).focus {
-        background-color: $color-secondary; // Rojo en foco
-        border-color: $color-secondary; // Rojo en foco
+        background-color: $color-secondary; // Naranja en foco
+        border-color: $color-secondary; // Naranja en foco
         color: #ffffff; // Blanco en foco
     }
 }
 
 /* Botones Específicos */
 button.btn.btn-primary.icon-no-margin.p-0 {
-    background-color: $color-secondary; // Rojo para el fondo
+    background-color: $fng-red; // Rojo para el fondo
     border-color: white; // Color blanco para el borde
     color: white; // Color del texto
 
     &:hover {
-        background-color: $color-secondary; // Rojo para el fondo en hover
+        background-color: $fng-red; // Rojo para el fondo en hover
         border-color: white; // Mantiene el borde blanco en hover
         color: white !important; // Color del texto en hover
     }
@@ -358,7 +358,7 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: darken($color-secondary, 10%); // Oscurece el color secundario para el estado activo
+        background-color: darken($fng-red, 10%); // Oscurece el color secundario para el estado activo
         border-color: white; // Mantiene el borde blanco para el estado activo
         color: white; // Mantiene el texto blanco para mejor visibilidad
 
@@ -389,11 +389,11 @@ button.btn.btn-primary.icon-no-margin.p-0 {
 }
 
 .block_calendar_upcoming .event.my-event-urgent {
-    border-color: #f51f25;
+    border-color: $fng-red;
 }
 
 .block_calendar_upcoming .event.my-event-priority {
-    border-color: #f89406;
+    border-color: $fng-orange;
 }
 
 /* END Personalizaciones Próximos Eventos */
@@ -631,7 +631,7 @@ span.badge.bg-secondary.text-dark {
 
 /* Barra superior azul */
 .gov-navbar-top {
-    background-color: #3366CC; /* Azul de GOV.CO */
+    background-color: $fng-blue-dark; /* Actualizado al azul FNG #045091 */
     height: 38px; /* Aumentado de 32px a 38px */
     display: flex;
     align-items: center;
@@ -650,7 +650,7 @@ span.badge.bg-secondary.text-dark {
 
 /* Barra de menú azul oscuro */
 .gov-navbar-menu {
-    background: #002747;
+    background: darken($fng-blue-dark, 10%); /* Azul oscuro basado en el color principal */
     height: 52px; /* Aumentado de 44px a 52px */
     display: flex;
     align-items: center;
@@ -695,7 +695,7 @@ span.badge.bg-secondary.text-dark {
 .gov-link:active {
     color: #FFFFFF;
     text-decoration: none;
-    background: #3366CC;
+    background: $fng-blue-medium; /* Actualizado a azul medio FNG */
     outline: none; /* Elimina el outline por defecto */
     box-shadow: 0 0 0 2px rgba(255,255,255,0.5); /* Añade un box-shadow como indicador de foco */
 }
@@ -703,12 +703,12 @@ span.badge.bg-secondary.text-dark {
 .gov-link i {
     margin-left: 8px; /* Aumentado de 5px a 8px */
     font-size: 18px; /* Aumentado de 16px a 18px */
-    color: #FABC20;
+    color: $fng-yellow; /* Actualizado a amarillo FNG */
 }
 
 /* Añadir un indicador visual de foco para accesibilidad */
 .gov-link:focus-visible {
-    outline: 2px solid #FABC20;
+    outline: 2px solid $fng-yellow; /* Actualizado a amarillo FNG */
     outline-offset: 2px;
 }
 
