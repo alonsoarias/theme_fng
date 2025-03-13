@@ -20,7 +20,7 @@ $templatecontext = [
     'bodyattributes'   => $bodyattributes,
     'loginbackground'  => '',
     'carouselimages'   => [],
-    'carouselinterval' => isset($theme->settings->carouselinterval) ? (int)$theme->settings->carouselinterval : 5000,
+    'carouselinterval' => isset($theme->settings->fng_carouselinterval) ? (int)$theme->settings->fng_carouselinterval : 5000,
     'my_credit'        => get_string('credit', 'theme_fng'),
     'hasgeneralnote'   => false,
     'generalnote'      => '',
@@ -35,12 +35,12 @@ $templatecontext = [
 // =========================================================================
 // 1) Fondo o color del área de login
 // =========================================================================
-$loginimageurl = $theme->setting_file_url('loginimage', 'loginimage');
+$loginimageurl = $theme->setting_file_url('fng_loginimage', 'fng_loginimage');
 if (!empty($loginimageurl)) {
     $templatecontext['loginbackground'] = "background-image: url('{$loginimageurl}'); background-size: cover; background-position: center;";
     $templatecontext['has_loginimage'] = true;
 } else {
-    $loginbgcolor = !empty($theme->settings->loginbg_color) ? $theme->settings->loginbg_color : '#b2cdea';
+    $loginbgcolor = !empty($theme->settings->fng_loginbg_color) ? $theme->settings->fng_loginbg_color : '#045091';
     $templatecontext['loginbackground'] = "background-color: {$loginbgcolor};";
     $templatecontext['has_loginbgcolor'] = true;
 }
@@ -49,23 +49,23 @@ if (!empty($loginimageurl)) {
 // =========================================================================
 // 2) Carrusel de diapositivas
 // =========================================================================
-// Se obtiene el número de slides configurado con el prefijo "loging_".
-$numslides = isset($theme->settings->loging_numberofslides) && is_numeric($theme->settings->loging_numberofslides)
-    ? (int)$theme->settings->loging_numberofslides
+// Se obtiene el número de slides configurado con el prefijo "fng_".
+$numslides = isset($theme->settings->fng_numberofslides) && is_numeric($theme->settings->fng_numberofslides)
+    ? (int)$theme->settings->fng_numberofslides
     : 1;
 
 $validSlides = 0; // Contador de slides válidos
 
 for ($i = 1; $i <= $numslides; $i++) {
-    // Obtenemos la URL de la imagen usando el identificador con prefijo "loging_"
-    $imageurl = $theme->setting_file_url("loging_slideimage{$i}", "loging_slideimage{$i}");
+    // Obtenemos la URL de la imagen 
+    $imageurl = $theme->setting_file_url("fng_slideimage{$i}", "fng_slideimage{$i}");
     
     if (!empty($imageurl)) {
         // Verificamos si el archivo existe en storage.
         $files = $fs->get_area_files(
             $context->id,
             'theme_fng',
-            "loging_slideimage{$i}",
+            "fng_slideimage{$i}",
             0,
             'sortorder',
             false
@@ -74,13 +74,13 @@ for ($i = 1; $i <= $numslides; $i++) {
         if (!empty($files)) {
             $validSlides++;
             
-            // Extraemos los demás parámetros del slide usando los identificadores con prefijo "loging_"
+            // Extraemos los demás parámetros del slide
             $slidetitle = format_string(
-                $theme->settings->{"loging_slidetitle{$i}"} ?? '',
+                $theme->settings->{"fng_slidetitle{$i}"} ?? '',
                 true,
                 ['escape' => false]
             );
-            $slideurl = $theme->settings->{"loging_slideurl{$i}"} ?? '#';
+            $slideurl = $theme->settings->{"fng_slideurl{$i}"} ?? '#';
             
             // Se añade la diapositiva al array con sus settings
             $templatecontext['carouselimages'][] = [
