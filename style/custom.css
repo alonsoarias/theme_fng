@@ -33,7 +33,7 @@ div#navbarmenutopic {
 }
 
 #page-footer .copyright {
-    background-color: $my-gris;
+    background-color: $my-gris; /* Reemplazado con $my-gris */
     color: $color-primary;
     text-align: center;
     min-height: inherit;
@@ -41,7 +41,7 @@ div#navbarmenutopic {
 }
 
 #top-footer {
-    background-color: $color-primary;
+    background-color: $color-primary; /* Azul oscuro */
     color: $color-white;
     margin: 0 -15px;
 }
@@ -54,6 +54,7 @@ div#navbarmenutopic {
 
 #top-footer h3 {
     margin-bottom: 15px;
+    /* Espacio debajo del título */
 }
 
 /* Button Styles */
@@ -65,12 +66,12 @@ div#navbarmenutopic {
 }
 
 .btn-link {
-    color: $color-secondary;
+    color: $color-secondary; /* Azul oscuro */
     border-color: $color-primary;
 }
 
 .btn-link:hover {
-    color: $color-primary;
+    color: $color-primary; /* Rojo */
     border-color: $color-secondary;
 }
 
@@ -112,6 +113,8 @@ div#navbarmenutopic {
 }
 
 /* List and Link Styles */
+/* Eliminado: #course-category-listings .listitem[data-selected="1"] { ... } */
+
 .text-info,
 .users-list-name,
 #page-header #page-navbar nav ol.breadcrumb .breadcrumb-item a {
@@ -139,6 +142,7 @@ div#navbarmenutopic {
 @media (max-width: 768px) {
     .about-text-content {
         padding: 0 10px;
+        /* Menor padding en dispositivos más pequeños */
     }
 }
 
@@ -150,13 +154,13 @@ div#navbarmenutopic {
 }
 
 .form-autocomplete-suggestions li:hover {
-    background-color: $color-primary;
+    background-color: $color-primary; /* Cambiado a $color-primary según botón */
     color: $color-white;
     border-left: 4px solid $color-primary;
 }
 
 .form-autocomplete-suggestions li:focus {
-    background-color: $color-lightgray-dimmed;
+    background-color: $color-lightgray-dimmed; /* Definir o ajustar según necesidad */
     color: $color-primary;
     border-left: 4px solid $color-secondary-dark;
 }
@@ -177,7 +181,7 @@ div#navbarmenutopic {
         content: '';
         display: block;
         border-top: 8px solid transparent;
-        border-left: 10px solid $color-primary;
+        border-left: 10px solid $color-primary; /* Reemplazado con $color-primary */
         border-bottom: 8px solid transparent;
         position: absolute;
         top: 50%;
@@ -244,6 +248,7 @@ div#navbarmenutopic {
     flex-direction: column;
 }
 
+/*20240926*/
 .floating-buttons-wrapper > .btn-floating {
     width: 48px;
     height: 48px;
@@ -258,527 +263,232 @@ div#navbarmenutopic {
     border-color: white;
 }
 
-/* Courseindex Section Title */
+/* Nueva regla para courseindex-section-title con clases adicionales */
 #theme_remui-drawers-courseindex .drawercontent #courseindex #courseindex-content .courseindex .courseindex-section .courseindex-section-title.courseindex-item.d-flex.align-items-center.dropready {
     padding: 10px 24px;
     color: #ffffff;
-    background-color: $color-primary;
+    background-color: $color-primary; /* Aplicado $color-primary */
     border-radius: 0;
     justify-content: space-between;
 }
 
+/* Botones */
+
 /* Primary button styling */
 .btn-primary {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
-    color: #ffffff;
+    background-color: $color-secondary; // Rojo para el fondo
+    border-color: $color-secondary; // Rojo para el borde
+    color: #ffffff; // Blanco para el texto
 
     .fa,
     .edw-icon {
-        color: #ffffff;
+        color: #ffffff; // Blanco para los iconos
     }
 
     &:hover {
-        background-color: $color-primary;
-        border-color: $color-primary;
-        color: #ffffff;
+        background-color: $color-primary; // Azul oscuro en hover
+        border-color: $color-primary; // Azul oscuro para el borde en hover
+        color: #ffffff; // Blanco para el texto en hover
     }
 
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: $color-secondary;
-        border-color: $color-secondary;
-        color: #ffffff;
+        background-color: $color-secondary; // Rojo en activo
+        border-color: $color-secondary; // Rojo en activo
+        color: #ffffff; // Blanco en activo
     }
 
     &:not(:disabled):not(.disabled):focus,
     &:not(:disabled):not(.disabled).focus {
-        background-color: $color-primary;
-        border-color: $color-primary;
-        color: #ffffff;
+        background-color: $color-primary; // Azul oscuro en foco
+        border-color: $color-primary; // Azul oscuro en foco
+        color: #ffffff; // Blanco en foco
     }
 }
 
 /* Secondary button styling */
 .btn-secondary {
-    background-color: $color-primary;
-    border-color: $color-primary;
-    color: #ffffff;
+    background-color: $color-primary; // Azul oscuro para el fondo
+    border-color: $color-primary; // Azul oscuro para el borde
+    color: #ffffff; // Blanco para el texto
 
     .fa,
     .edw-icon {
-        color: #ffffff;
+        color: #ffffff; // Blanco para los iconos
     }
 
     &:hover {
-        background-color: $color-secondary;
-        border-color: $color-secondary;
-        color: #ffffff;
+        background-color: $color-secondary; // Rojo en hover
+        border-color: $color-secondary; // Rojo en hover
+        color: #ffffff; // Blanco para el texto en hover
     }
 
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: $color-primary;
-        border-color: $color-primary;
-        color: #ffffff;
+        background-color: $color-primary; // Azul oscuro en activo
+        border-color: $color-primary; // Azul oscuro en activo
+        color: #ffffff; // Blanco en activo
     }
 
     &:not(:disabled):not(.disabled):focus,
     &:not(:disabled):not(.disabled).focus {
-        background-color: $color-secondary;
-        border-color: $color-secondary;
-        color: #ffffff;
+        background-color: $color-secondary; // Rojo en foco
+        border-color: $color-secondary; // Rojo en foco
+        color: #ffffff; // Blanco en foco
     }
 }
 
-/* Login Page Styles */
-.pagelayout-login {
+/* Botones Específicos */
+button.btn.btn-primary.icon-no-margin.p-0 {
+    background-color: $color-secondary; // Rojo para el fondo
+    border-color: white; // Color blanco para el borde
+    color: white; // Color del texto
+
+    &:hover {
+        background-color: $color-secondary; // Rojo para el fondo en hover
+        border-color: white; // Mantiene el borde blanco en hover
+        color: white !important; // Color del texto en hover
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active:focus,
+    .show > &.dropdown-toggle {
+        background-color: darken($color-secondary, 10%); // Oscurece el color secundario para el estado activo
+        border-color: white; // Mantiene el borde blanco para el estado activo
+        color: white; // Mantiene el texto blanco para mejor visibilidad
+
+        .fa,
+        .edw-icon {
+            color: white; // Mantiene el color de los íconos en blanco
+        }
+    }
+}
+
+.btn-floating {
+    border-color: white;
+}
+
+.btn-primary .fa,
+.btn-primary .edw-icon {
+    color: white !important;
+}
+
+.navbar .edw-icon{
+    color: $color-primary;
+}
+/* Personalizaciones Próximos Eventos */
+
+.block_calendar_upcoming .event {
+    border-left: 2px solid #ccc;
+    padding-left: 5px;
+}
+
+.block_calendar_upcoming .event.my-event-urgent {
+    border-color: #f51f25;
+}
+
+.block_calendar_upcoming .event.my-event-priority {
+    border-color: #f89406;
+}
+
+/* END Personalizaciones Próximos Eventos */
+
+/* Responsive rules */
+
+/* Para tablets y desktops pequeños */
+@media (min-width: 768px) {
+}
+
+/* Para pantallas un poco más grandes que tablets */
+@media (min-width: 800px) {
+}
+
+/* Para desktops grandes */
+@media (min-width: 1200px) {
+}
+
+/* Estilos para dispositivos con un ancho máximo de 993px y una altura mínima de 640px */
+@media (max-width: 993px) {
+    @media (min-height: 640px) {
+    }
+}
+
+/* Para dispositivos móviles (tablets y teléfonos en posición horizontal) */
+@media (max-width: 767px) {
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 639px) {
+}
+
+/* Para dispositivos aún más pequeños */
+@media (max-width: 576px) {
+}
+
+/* Para teléfonos muy pequeños */
+@media (max-width: 500px) {
+}
+
+/* Para los teléfonos más pequeños */
+@media (max-width: 479px) {
+}
+
+
+/* Estilos base para la página de login */
+.login-page {
     min-height: 100vh;
+    background-color: var(--color-bg-page);
     overflow: hidden;
     display: flex;
     flex-direction: column;
 
-    // Container principal del formulario
-    .col-12.col-lg-4.mb-4.mb-lg-0.mx-auto {
-        width: 100%;
-        padding: 0 15px;
+    /* Contenedor principal */
+    .login-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
 
-        // Estilos de la card
-        .card {
-            border-radius: 1rem;
-            border: none;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-            background: #ffffff;
-            
-            // Contenedor del formulario
-            .card-body {
-                padding: 1.5rem !important;
-                
-                // Estilos específicos para el contenido del login
-                #region-main {
-                    width: 100%;
-                    padding: 0;
-                    margin: 0;
-                    border: none;
-                    background: transparent;
-
-                    .login-wrapper {
-                        margin: 0;
-                        padding: 0;
-                    }
-
-                    // Formulario de login
-                    #loginform {
-                        margin: 0;
-                        width: 100%;
-
-                        .form-group:not(:last-child) {
-                            margin-bottom: 0.5rem;
-                        }
-
-                        // Input fields
-                        .form-control {
-                            height: 42px;
-                            border-radius: 8px;
-                            border: 1px solid rgba($color-primary, 0.2);
-                            padding: 0.625rem 0.875rem;
-                            font-size: 0.9375rem;
-                            transition: all 0.3s ease;
-
-                            &:focus {
-                                border-color: $color-primary;
-                                box-shadow: 0 0 0 0.2rem rgba($color-primary, 0.1);
-                            }
-                        }
-
-                        // Labels
-                        label {
-                            color: $color-primary;
-                            font-weight: 500;
-                            margin-bottom: 0.375rem;
-                            font-size: 0.875rem;
-                        }
-
-                        // Submit button
-                        #loginbtn {
-                            width: 100%;
-                            height: 42px;
-                            border-radius: 8px;
-                            font-weight: 500;
-                            margin-top: 0.875rem;
-                            text-transform: uppercase;
-                            letter-spacing: 0.5px;
-                            font-size: 0.875rem;
-                        }
-
-                        // Remember me checkbox
-                        .rememberpass {
-                            margin-top: 0.875rem;
-                            display: flex;
-                            align-items: center;
-                            font-size: 0.8125rem;
-                            
-                            input[type="checkbox"] {
-                                margin-right: 0.375rem;
-                            }
-                        }
-
-                        // Forgot password link
-                        .forgotpass {
-                            margin-top: 0.875rem;
-                            text-align: center;
-                            
-                            a {
-                                color: $color-primary;
-                                text-decoration: none;
-                                font-size: 0.8125rem;
-                                
-                                &:hover {
-                                    color: $color-secondary;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        /* Grid layout */
+        .row {
+            margin: 0;
+            min-height: 100vh;
         }
     }
+}
 
-    // Welcome section
+/* Estilos del formulario de login */
+.loginform {
+    display: flex;
+    flex-direction: column;
+    max-width: var(--max-width-form);
+    animation: fadeIn 0.8s ease-out;
+
+    /* Mensaje de bienvenida */
     .login-welcome-wrapper {
+        text-align: center;
+        margin-bottom: 2rem;
+
         h2 {
             font-size: 1.25rem;
-            color: $color-primary;
-            margin-bottom: 0.375rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
         }
 
         p {
-            color: $color-primary;
-            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
         }
     }
 
-    // Cookies section
-    .cookies-section {
-        padding: 10px 0;
-
-        * {
-            color: $color-primary;
-
-            &:hover {
-                color: $color-secondary;
-            }
-        }
-    }
-
-    // Carousel section
-    .carousel-container {
-        .card {
-            border-radius: 24px;
-            overflow: hidden;
-            height: 100%;
-            
-            .carousel {
-                position: relative;
-                width: 100%;
-                padding-bottom: 75%;
-                
-                .carousel-inner {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    
-                    .carousel-item {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            object-position: center;
-                            max-width: 1440px;
-                            max-height: 1080px;
-                        }
-                        
-                        .carousel-caption {
-                            position: absolute;
-                            bottom: 20px;
-                            left: 50%;
-                            transform: translateX(-50%);
-                            background: rgba(0, 0, 0, 0.5);
-                            padding: 1rem;
-                            border-radius: 8px;
-                            max-width: 80%;
-                            
-                            h5 {
-                                color: white;
-                                margin: 0;
-                                font-size: 1.25rem;
-                                text-align: center;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // Carousel Controls
-    .carousel-control {
-        &-prev,
-        &-next {
-            width: 40px;
-            height: 40px;
-            background-color: rgba($color-primary, 0.7);
-            border-radius: 50%;
-            border: none;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            z-index: 10;
-            
-            &:hover {
-                opacity: 1;
-                background-color: $color-primary;
-            }
-            
-            &::before {
-                color: white;
-                font-weight: bold;
-                font-size: 24px;
-            }
-        }
-        
-        &-prev {
-            left: 20px;
-            &::before { content: "<"; }
-        }
-        
-        &-next {
-            right: 20px;
-            &::before { content: ">"; }
-        }
-    }
-
-    // Media queries
-    @media (max-width: 1440px) {
-        .carousel-container .carousel-item img {
-            max-width: 100%;
-        }
-    }
-
-    @media (max-width: 991.98px) {
-        .col-12.col-lg-4.mb-4.mb-lg-0.mx-auto {
-            .card .card-body {
-                padding: 1.25rem !important;
-                min-height: 330px;
-            }
-        }
-        
-        .carousel-container {
-            margin-top: 2rem;
-
-            .card {
-                border-radius: 16px;
-            }
-
-            .carousel-control {
-                &-prev,
-                &-next {
-                    width: 32px;
-                    height: 32px;
-
-                    &::before {
-                        font-size: 20px;
-                    }
-                }
-            }
-        }
-    }
-
-    @media (max-width: 576px) {
-        .col-12.col-lg-4.mb-4.mb-lg-0.mx-auto {
-            padding: 0 8px;
-            
-            .card .card-body {
-                padding: 1rem !important;
-                min-height: 280px;
-
-                #region-main #loginform {
-                    .form-control, #loginbtn {
-                        height: 40px;
-                    }
-                }
-            }
-        }
-
-        .carousel-container {
-            .card {
-                border-radius: 12px;
-            }
-
-            .carousel-control {
-                &-prev,
-                &-next {
-                    width: 28px;
-                    height: 28px;
-
-                    &::before {
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
-    }
-
-    // Ocultar elementos innecesarios
-    .header-main,
-    .navbar,
-    .drawer-toggles,
-    .debug {
-        display: none !important;
-    }
 }
 
-/* Footer */
-.my-credit-footer-wrapper {
-    margin-top: auto;
-    background-color: $color-lightgray;
-    padding: 5px 0;
-    
-    .my-credit {
-        color: $color-primary;
-        font-size: 0.875rem;
-        text-align: center;
-
-        a {
-            color: $color-primary;
-            text-decoration: none;
-
-            &:hover {
-                color: $color-secondary;
-            }
-        }
-    }
-}
-
-/* Carousel */
-.pagelayout-login {
-    .carousel-container {
-        .card {
-            border-radius: 24px;
-            overflow: hidden;
-            height: 100%;
-            
-            .carousel {
-                position: relative;
-                width: 100%;
-                padding-bottom: 75%; // Mantiene relación 4:3
-                
-                .carousel-inner {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    
-                    .carousel-item {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            object-position: center;
-                            max-width: 1440px;
-                            max-height: 1080px;
-                        }
-                        
-                        .carousel-caption {
-                            position: absolute;
-                            bottom: 20px;
-                            left: 50%;
-                            transform: translateX(-50%);
-                            background: rgba(0, 0, 0, 0.5);
-                            padding: 1rem;
-                            border-radius: 8px;
-                            max-width: 80%;
-                            
-                            h5 {
-                                color: white;
-                                margin: 0;
-                                font-size: 1.25rem;
-                                text-align: center;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /* Carousel Controls */
-    .carousel-control {
-        &-prev,
-        &-next {
-            width: 40px;
-            height: 40px;
-            background-color: rgba($color-primary, 0.7);
-            border-radius: 50%;
-            border: none;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-            z-index: 10;
-            
-            &:hover {
-                opacity: 1;
-                background-color: $color-primary;
-            }
-            
-            &::before {
-                color: white;
-                font-weight: bold;
-                font-size: 24px;
-            }
-        }
-        
-        &-prev {
-            left: 20px;
-            &::before { content: "<"; }
-        }
-        
-        &-next {
-            right: 20px;
-            &::before { content: ">"; }
-        }
-    }
+.login-wrapper{
+    margin: 10%;
 }
 
 /* Animaciones */
@@ -793,79 +503,51 @@ div#navbarmenutopic {
     }
 }
 
-/* Media Queries */
-@media (max-width: 1440px) {
-    .pagelayout-login {
-        .carousel-container .carousel-item img {
-            max-width: 100%;
-        }
+/* Footer */
+.footer {
+    background-color: var(--color-footer-bg);
+    padding: 1rem 0;
+    text-align: center;
+
+    .my-credit {
+        font-size: 0.875rem;
+        color: var(--color-text-secondary);
     }
 }
 
+/* Media queries para responsividad */
 @media (max-width: 991.98px) {
-    .pagelayout-login {
-        .carousel-container {
-            margin-top: 2rem;
-
-            .card {
-                border-radius: 16px;
-            }
-
-            .carousel-control {
-                &-prev,
-                &-next {
-                    width: 32px;
-                    height: 32px;
-
-                    &::before {
-                        font-size: 20px;
-                    }
-                }
-            }
-        }
+    .loginform {
+        margin: 5%;
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .pagelayout-login {
-        .carousel-container {
-            .carousel-caption h5 {
-                font-size: 1rem;
-            }
+    .loginform {
+        .login-welcome-wrapper h2 {
+            font-size: 1.25rem;
         }
     }
 }
 
-@media (max-width: 576px) {
-    .pagelayout-login {
-        .carousel-container {
-            .card {
-                border-radius: 12px;
-            }
+@media (max-width: 480px) {
+    .loginform {
+        margin: 1rem;
+        padding: 1rem;
 
-            .carousel-control {
-                &-prev,
-                &-next {
-                    width: 28px;
-                    height: 28px;
-
-                    &::before {
-                        font-size: 16px;
-                    }
-                }
-            }
+        .login-logo img {
+            max-width: 150px;
         }
     }
 }
 
-/* Ocultar elementos innecesarios en la página de login */
-.pagelayout-login {
-    .header-main,
-    .navbar,
-    .drawer-toggles,
-    .debug {
-        display: none !important;
-    }
+
+.carousel-item img {
+    object-fit: cover; /* Ya está en tu código */
+    width: 100%;
+    height: 100vh;
+    max-height: 1080px; /* Para evitar estiramiento excesivo en pantallas muy altas */
 }
 
 .primary-navigation .nav.more-nav {
@@ -905,9 +587,6 @@ div#navbarmenutopic {
 .navbar [data-key="recentcourses"] {
     display: none;
 }
-.navbar [data-key="coursecat"] {
-    display: none;
-}
 
 span.badge.badge-info {
     color: white;
@@ -915,4 +594,283 @@ span.badge.badge-info {
 span.badge.rounded-pill.bg-secondary.text-dark {
     color: white !important;
 }
+span.badge.bg-secondary.text-dark {
+    color: white !important;
+}
+.about-text-content h4.data {
+    color: #ffffff;
+}
+.about-text-content a.link-1 {
+    color: #ffffff;
+}
+.login-logo img.mb-3.img-fluid {
+    width: 50%;
+}
 
+/*20250303*/
+/*NAVBAR DE GOBIERNO*/
+/* 
+ * Estilos para el Navbar de Gobierno con Bootstrap
+ * Para el Fondo Nacional de Garantías - Versión mejorada y ampliada
+ */
+
+/* Importación de fuentes */
+/* @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap'); */
+
+/* Contenedor principal del navbar */
+.gov-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1031; /* Más alto que el navbar de Moodle */
+    font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    height: 90px; /* Aumentado de 76px a 90px (38px + 52px) */
+}
+
+/* Barra superior azul */
+.gov-navbar-top {
+    background-color: #3366CC; /* Azul de GOV.CO */
+    height: 38px; /* Aumentado de 32px a 38px */
+    display: flex;
+    align-items: center;
+}
+
+/* Logo de GOV.CO */
+.gov-logo {
+    height: 30px; /* Aumentado de 24px a 30px */
+    margin-top: 4px;
+}
+
+.gov-logo img {
+    height: 30px; /* Aumentado de 24px a 30px */
+    width: auto;
+}
+
+/* Barra de menú azul oscuro */
+.gov-navbar-menu {
+    background: #002747;
+    height: 52px; /* Aumentado de 44px a 52px */
+    display: flex;
+    align-items: center;
+}
+
+/* Lista de menú */
+.gov-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.gov-menu-item {
+    margin-right: 25px; /* Aumentado de 20px a 25px */
+    position: relative;
+}
+
+.gov-menu-item:last-child {
+    margin-right: 0;
+}
+
+.gov-link {
+    color: #FFFFFF;
+    font-size: 16px; /* Aumentado de 14px a 16px */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 12px; /* Aumentado de 8px a 12px */
+    padding-bottom: 12px; /* Aumentado de 8px a 12px */
+    padding-left: 15px; /* Aumentado de 10px a 15px */
+    padding-right: 15px; /* Aumentado de 10px a 15px */
+    transition: background-color 0.3s ease;
+    border-radius: 4px; /* Añadido para mejorar la accesibilidad visual */
+}
+
+.gov-link:hover, 
+.gov-link:focus, 
+.gov-link:active {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: #3366CC;
+    outline: none; /* Elimina el outline por defecto */
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5); /* Añade un box-shadow como indicador de foco */
+}
+
+.gov-link i {
+    margin-left: 8px; /* Aumentado de 5px a 8px */
+    font-size: 18px; /* Aumentado de 16px a 18px */
+    color: #FABC20;
+}
+
+/* Añadir un indicador visual de foco para accesibilidad */
+.gov-link:focus-visible {
+    outline: 2px solid #FABC20;
+    outline-offset: 2px;
+}
+
+/* Ajustes para el navbar principal de Moodle */
+.navbar.fixed-top {
+    top: 90px !important; /* Actualizado de 76px a 90px */
+    position: fixed !important;
+}
+
+/* Ajustes para el body */
+body {
+    padding-top: 162px !important; /* Actualizado de 148px a 162px (90px + altura del navbar de Moodle) */
+}
+
+/* Override específico para el problema mencionado */
+@media (min-width: 576px) {
+    body:not(.focusmode) .navbar:not(.fm-navbar) {
+        top: 90px !important; /* Actualizado de 76px a 90px */
+        transition: all 0.5s ease;
+    }
+    
+    html body.focusmode .navbar.fm-navbar {
+        top: 0 !important;
+    }
+}
+
+/* Aumentar especificidad para resolver conflictos */
+html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
+    top: 90px !important; /* Actualizado de 76px a 90px */
+}
+
+/* Aplicar a cualquier contenedor adicional */
+.navbar-wrapper .navbar,
+#page-header + .navbar,
+#wdm-wrapper-navbar,
+.page-header + .navbar {
+    top: 90px !important; /* Actualizado de 76px a 90px */
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .gov-link {
+        font-size: 15px; /* Ligeramente reducido para tablets */
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gov-navbar {
+        height: 84px; /* Reducido pero aún más grande que el original */
+    }
+    
+    .gov-navbar-top {
+        height: 36px;
+    }
+    
+    .gov-navbar-menu {
+        height: 48px;
+    }
+    
+    .gov-link {
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    /* Texto truncado para móviles - ahora con mejor manejo de texto largo */
+    .gov-menu-item:last-child .gov-link {
+        max-width: 140px; /* Aumentado de 120px a 140px */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .navbar.fixed-top, 
+    .navbar-wrapper .navbar,
+    #page-header + .navbar,
+    #wdm-wrapper-navbar {
+        top: 84px !important; /* Actualizado para móviles */
+    }
+    
+    body {
+        padding-top: 156px !important; /* Actualizado para móviles */
+    }
+}
+
+@media (max-width: 576px) {
+    .gov-navbar {
+        height: auto;
+    }
+    
+    .gov-navbar-menu {
+        height: auto;
+        padding: 8px 0; /* Aumentado de 5px a 8px */
+    }
+    
+    .gov-menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .gov-menu-item {
+        margin-right: 0;
+        margin-bottom: 8px; /* Aumentado de 5px a 8px */
+        width: 100%;
+    }
+    
+    .gov-link {
+        width: 100%;
+        justify-content: space-between; /* Mejor alineación en móviles */
+        font-size: 15px; /* Algo más grande para mejor legibilidad en móviles */
+    }
+    
+    .gov-menu-item:last-child .gov-link {
+        max-width: none; /* En pantallas muy pequeñas, permitir que el texto ocupe el ancho completo */
+    }
+    
+    .navbar.fixed-top,
+    .navbar-wrapper .navbar,
+    #page-header + .navbar,
+    #wdm-wrapper-navbar {
+        top: 100px !important; /* Ajustado para la altura variable en móviles */
+    }
+    
+    body {
+        padding-top: 170px !important; /* Ajustado para la altura variable en móviles */
+    }
+}
+
+/* Mejoras de accesibilidad adicionales */
+.gov-link .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Para usuarios con alto contraste */
+@media (forced-colors: active) {
+    .gov-link:focus {
+        outline: 3px solid CanvasText;
+    }
+    
+    .gov-link i {
+        forced-color-adjust: none;
+    }
+}
+
+/* Fix para navegadores antiguos */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .navbar.fixed-top {
+        top: 90px !important; /* Actualizado de 76px a 90px */
+    }
+}
+
+/* Estilo inline para máxima especificidad */
+div.navbar.fixed-top {
+    top: 90px !important; /* Actualizado de 76px a 90px */
+}
