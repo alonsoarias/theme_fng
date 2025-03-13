@@ -25,7 +25,7 @@ h1.h2.header-heading {
     font-weight: bold !important;
 }
 a {
-    color: $color-primary;
+    color: $fng-blue-medium;
 }
 a:hover {
     color: $color-secondary;
@@ -37,7 +37,7 @@ a:hover {
 .nav-pills {
     .nav-link.active,
     .show > .nav-link {
-        color: #ffffff; // Uso de blanco directo
+        color: #ffffff;
         background-color: $color-primary; // Azul oscuro para el fondo activo
     }
 }
@@ -45,7 +45,7 @@ a:hover {
 .edw-tabs-navigation .nav-tabs .nav-item .nav-link.active,
 .edw-tabs-navigation .nav-tabs .nav-item .nav-link:hover,
 .edw-tabs-navigation .nav-tabs .nav-item .nav-link:focus {
-    color: $color-primary; // Reemplazado #3972b5 con $color-primary
+    color: $color-primary;
 }
 .edw-tabs-navigation .nav-tabs .nav-item .nav-link.active::before {
     border-bottom: 3px solid $color-primary;
@@ -88,15 +88,15 @@ a:hover {
     border-bottom: 3px solid $color-primary;
 }
 .block_calendar_upcoming .event.my-event-urgent {
-    border-color: #f51f25;
+    border-color: $fng-red;
 }
 
 .block_calendar_upcoming .event.my-event-priority {
-    border-color: #f89406;
+    border-color: $fng-orange;
 }
 
 .badge.badge-danger {
-    background-color: #f51f25;
+    background-color: $fng-red;
 }
 
 /* END Personalizaciones Próximos Eventos */
@@ -120,7 +120,7 @@ a:hover {
     text-transform: none;
 }
 
-.inteb-block-header {
+.fng-block-header {
     color: $color-primary;
 }
 
@@ -482,7 +482,7 @@ section.node-category {
 .block_timeline .block-timeline [data-region="day-filter"] .dropdown-toggle,
 .block_timeline .block-timeline [data-region="view-selector"] .dropdown-toggle {
     border: 1px solid #d5ddea;
-    color: #1c3d77;
+    color: $fng-blue-dark;
 }
 .block_timeline .block-timeline [data-region="timeline-view"] {
     box-shadow: none;
@@ -497,7 +497,7 @@ section.node-category {
 }
 
 .navbar #usernavigation .userinitials {
-    background-color: $my-blue; // Reemplazado con $my-blue
+    background-color: $fng-blue-medium; // Reemplazado con $fng-blue-medium
     color: #ffffff;
 }
 
@@ -541,18 +541,18 @@ a.nav-link {
     color: $color-primary;
 }
 .navbar .primary-navigation .nav-link.active {
-    color: $color-primary; // Reemplazado #366daf con $color-primary
+    color: $color-primary;
 }
 
 .navbar .primary-navigation .nav-link.active::before {
-    border-bottom-color: $color-primary; // Reemplazado #3972b5 con $color-primary
+    border-bottom-color: $color-primary;
 }
 
 .navbar .primary-navigation .nav-link:hover,
 .navbar .primary-navigation .more-nav > .dropdown > .dropdown-toggle:hover,
 .navbar #usernavigation .nav-link:hover,
 .navbar #usernavigation .more-nav > .dropdown > .dropdown-toggle:hover {
-    color: $color-primary; // Reemplazado #3972b5 con $color-primary
+    color: $color-primary;
 }
 
 .navbar {
@@ -564,12 +564,12 @@ a.nav-link {
 .navbar #usernavigation .nav-link.active::before,
 .navbar #usernavigation .dropdown-toggle.active::before {
     top: 56px;
-    border-bottom: 3px solid $color-primary; // Reemplazado #3972b5 con $color-primary
+    border-bottom: 3px solid $color-primary;
 }
 
 /* Footer */
 #page-footer {
-    background-color: $color-secondary; /* Reemplazado con $color-secondary */
+    background-color: $color-secondary; /* Reemplazado con $color-secondary (naranja) */
 }
 
 /* Top Footer */
@@ -587,14 +587,14 @@ a.nav-link {
 #block-region-side-pre .block-content-area .table-wrapper .calendartable.calendarmonth th .dashboard-card .course-info-container .edw-card-design-hd span.categoryname.h-semibold-5,
 .dashboard-card .course-info-container .edw-card-design-hd span.categoryname.edw-msg-panel-badge {
     color: #fff;
-    background-color: $color-secondary; /* Rojo */
+    background-color: $color-secondary; /* Naranja */
     font-size: .8em;
 }
 
 /* Asegurar que las clases categoryname, text-truncate, small-info-semibold se vean bien */
 .categoryname.text-truncate.small-info-semibold {
     color: #fff;
-    background-color: $color-secondary; /* Rojo */
+    background-color: $color-secondary; /* Naranja */
     font-size: 0.8em;
 }
 
@@ -617,8 +617,8 @@ a.nav-link {
 
 /* Primary button styling */
 .btn-primary {
-    background-color: $color-secondary; // Rojo para el fondo
-    border-color: $color-secondary; // Rojo para el borde
+    background-color: $fng-red; // Rojo para el fondo
+    border-color: $fng-red; // Rojo para el borde
     color: #ffffff; // Blanco para el texto
 
     .fa,
@@ -636,8 +636,8 @@ a.nav-link {
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: $color-secondary; // Rojo en activo
-        border-color: $color-secondary; // Rojo en activo
+        background-color: $fng-red; // Rojo en activo
+        border-color: $fng-red; // Rojo en activo
         color: #ffffff; // Blanco en activo
     }
 
@@ -661,8 +661,8 @@ a.nav-link {
     }
 
     &:hover {
-        background-color: $color-secondary; // Rojo en hover
-        border-color: $color-secondary; // Rojo en hover
+        background-color: $color-secondary; // Naranja en hover
+        border-color: $color-secondary; // Naranja en hover
         color: #ffffff; // Blanco para el texto en hover
     }
 
@@ -677,20 +677,20 @@ a.nav-link {
 
     &:not(:disabled):not(.disabled):focus,
     &:not(:disabled):not(.disabled).focus {
-        background-color: $color-secondary; // Rojo en foco
-        border-color: $color-secondary; // Rojo en foco
+        background-color: $color-secondary; // Naranja en foco
+        border-color: $color-secondary; // Naranja en foco
         color: #ffffff; // Blanco en foco
     }
 }
 
 /* Botones Específicos */
 button.btn.btn-primary.icon-no-margin.p-0 {
-    background-color: $color-secondary; // Rojo para el fondo
+    background-color: $fng-red; // Rojo para el fondo
     border-color: white; // Color blanco para el borde
     color: white; // Color del texto
 
     &:hover {
-        background-color: $color-secondary; // Rojo para el fondo en hover
+        background-color: $fng-red; // Rojo para el fondo en hover
         border-color: white; // Mantiene el borde blanco en hover
         color: white !important; // Color del texto en hover
     }
@@ -699,7 +699,7 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: darken($color-secondary, 10%); // Oscurece el color secundario para el estado activo
+        background-color: darken($fng-red, 10%); // Oscurece el color secundario para el estado activo
         border-color: white; // Mantiene el borde blanco para el estado activo
         color: white; // Mantiene el texto blanco para mejor visibilidad
 
@@ -727,11 +727,11 @@ button.btn.btn-primary.icon-no-margin.p-0 {
 }
 
 .block_calendar_upcoming .event.my-event-urgent {
-    border-color: #f51f25;
+    border-color: $fng-red;
 }
 
 .block_calendar_upcoming .event.my-event-priority {
-    border-color: #f89406;
+    border-color: $fng-orange;
 }
 
 /* END Personalizaciones Próximos Eventos */
