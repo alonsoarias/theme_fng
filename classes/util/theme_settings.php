@@ -35,14 +35,18 @@ class settings {
         $templatecontext['my_credit'] = get_string('credit', 'theme_fng');
         
         // Comprobar y cargar correctamente abouttitle
-        $templatecontext['abouttitle'] = $this->theme->settings->abouttitle
-            ? $this->theme->settings->abouttitle 
+        $templatecontext['abouttitle'] = $this->theme->settings->fng_abouttitle
+            ? $this->theme->settings->fng_abouttitle 
             : get_string('abouttitle_default', 'theme_fng'); 
         
         // Comprobar y cargar correctamente abouttext
-        $templatecontext['abouttext'] = $this->theme->settings->abouttext
-            ? $this->theme->settings->abouttext 
+        $templatecontext['abouttext'] = $this->theme->settings->fng_abouttext
+            ? $this->theme->settings->fng_abouttext 
             : get_string('abouttext_default', 'theme_fng');
+            
+        // Comprobar si se debe mostrar la sección del footer
+        $templatecontext['hidefootersections'] = isset($this->theme->settings->fng_hidefootersections) 
+            && $this->theme->settings->fng_hidefootersections == 1;
         
         return $templatecontext;
     }
@@ -58,18 +62,24 @@ class settings {
     public function personal_area_header() {
         $templatecontext = [];
 
-        // Retrieve 'personalareaheader' from the theme settings or use a default value if not set.
-        $personalareaheader = $this->theme->setting_file_url('personalareaheader', 'personalareaheader');
-        if (!empty($personalareaheader)) {
-            $templatecontext['headerimage'] = [
-                'url' => $personalareaheader,
-                'title' => get_string('personalareaheader', 'theme_fng')
-            ];
-        } else {
-            $templatecontext['headerimage'] = [
-                'url' => '',
-                'title' => get_string('defaultheader', 'theme_fng')
-            ];
+        // Verificar si el encabezado debe mostrarse
+        $show_header = isset($this->theme->settings->fng_show_personalareaheader) 
+            && $this->theme->settings->fng_show_personalareaheader == 1;
+            
+        if ($show_header) {
+            // Retrieve 'personalareaheader' from the theme settings or use a default value if not set.
+            $personalareaheader = $this->theme->setting_file_url('fng_personalareaheader', 'fng_personalareaheader');
+            if (!empty($personalareaheader)) {
+                $templatecontext['headerimage'] = [
+                    'url' => $personalareaheader,
+                    'title' => get_string('personalareaheader', 'theme_fng')
+                ];
+            } else {
+                $templatecontext['headerimage'] = [
+                    'url' => '',
+                    'title' => get_string('defaultheader', 'theme_fng')
+                ];
+            }
         }
 
         return $templatecontext;
@@ -86,18 +96,24 @@ class settings {
     public function my_courses_header() {
         $templatecontext = [];
 
-        // Retrieve 'mycoursesheader' from the theme settings or use a default value if not set.
-        $mycoursesheader = $this->theme->setting_file_url('mycoursesheader', 'mycoursesheader');
-        if (!empty($mycoursesheader)) {
-            $templatecontext['headerimage'] = [
-                'url' => $mycoursesheader,
-                'title' => get_string('mycoursesheader', 'theme_fng')
-            ];
-        } else {
-            $templatecontext['headerimage'] = [
-                'url' => '',
-                'title' => get_string('defaultheader', 'theme_fng')
-            ];
+        // Verificar si el encabezado debe mostrarse
+        $show_header = isset($this->theme->settings->fng_show_mycoursesheader) 
+            && $this->theme->settings->fng_show_mycoursesheader == 1;
+            
+        if ($show_header) {
+            // Retrieve 'mycoursesheader' from the theme settings or use a default value if not set.
+            $mycoursesheader = $this->theme->setting_file_url('fng_mycoursesheader', 'fng_mycoursesheader');
+            if (!empty($mycoursesheader)) {
+                $templatecontext['headerimage'] = [
+                    'url' => $mycoursesheader,
+                    'title' => get_string('mycoursesheader', 'theme_fng')
+                ];
+            } else {
+                $templatecontext['headerimage'] = [
+                    'url' => '',
+                    'title' => get_string('defaultheader', 'theme_fng')
+                ];
+            }
         }
 
         return $templatecontext;
