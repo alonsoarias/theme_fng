@@ -125,25 +125,25 @@ public function get_theme_config()
         $theme = $this->get_theme_config();
 
         // Add chat widget if enabled and user is logged in
-        if (!empty($this->page->theme->settings->enable_chat) && isloggedin()) {
+        if (!empty($theme->settings->fng_enable_chat) && isloggedin()) {
             $output .= $this->add_chat_widget();
         }
 
         // Add accessibility widget only if enabled and user is logged in
-        if (isloggedin() && !empty($this->page->theme->settings->accessibility_widget)) {
+        if (isloggedin() && !empty($theme->settings->fng_accessibility_widget)) {
             $output .= '<script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script>';
             debugging('Accessibility widget loaded for user ID: ' . $USER->id, DEBUG_DEVELOPER);
         }
 
         // Add copy paste prevention if enabled
-        if (!empty($this->page->theme->settings->copypaste_prevention)) {
+        if (!empty($theme->settings->fng_copypaste_prevention)) {
             $this->add_copy_paste_prevention();
         }
 
         // Check if about text should be hidden
         if (
-            isset($this->page->theme->settings->hideabouttext) &&
-            $this->page->theme->settings->hideabouttext == 1
+            isset($theme->settings->fng_hidefootersections) &&
+            $theme->settings->fng_hidefootersections == 1
         ) {
             $output .= '<style>
                 body section#top-footer { 
@@ -168,24 +168,24 @@ public function get_theme_config()
         $output = '';
 
         // Ocultar secciones front page si está configurado
-        if (!empty($theme->settings->hidefrontpagesections)) {
+        if (!empty($theme->settings->fng_hidefrontpagesections)) {
             $output .= '<style>.frontpage-sections { display: none; }</style>';
         }
 
         // Aviso general (notice)
-        if (!empty(trim($theme->settings->generalnotice))) {
-            $mode = $theme->settings->generalnoticemode;
+        if (!empty(trim($theme->settings->fng_generalnotice))) {
+            $mode = $theme->settings->fng_generalnoticemode;
             // 'info' => alert-info, 'danger' => alert-danger, 'off' => sin aviso
             if ($mode === 'info') {
-                $output .= '<div class="alert alert-info mt-4"><strong><i class="fa fa-info-circle"></i></strong> ' . $theme->settings->generalnotice . '</div>';
+                $output .= '<div class="alert alert-info mt-4"><strong><i class="fa fa-info-circle"></i></strong> ' . $theme->settings->fng_generalnotice . '</div>';
             } else if ($mode === 'danger') {
-                $output .= '<div class="alert alert-danger mt-4"><strong><i class="fa fa-warning"></i></strong> ' . $theme->settings->generalnotice . '</div>';
+                $output .= '<div class="alert alert-danger mt-4"><strong><i class="fa fa-warning"></i></strong> ' . $theme->settings->fng_generalnotice . '</div>';
             }
         }
 
         // Recordatorio para admin, si el aviso está en modo 'off'
-        if (is_siteadmin() && (!empty($theme->settings->generalnoticemode) && $theme->settings->generalnoticemode === 'off')) {
-            $output .= '<div class="alert mt-4"><a href="' . $CFG->wwwroot . '/admin/settings.php?section=themesettingfng#theme_fng">' .
+        if (is_siteadmin() && (!empty($theme->settings->fng_generalnoticemode) && $theme->settings->fng_generalnoticemode === 'off')) {
+            $output .= '<div class="alert mt-4"><a href="' . $CFG->wwwroot . '/admin/settings.php?section=themesettingfng">' .
                 '<strong><i class="fa fa-edit"></i></strong> ' . get_string('generalnotice_create', 'theme_fng') . '</a></div>';
         }
 
@@ -201,7 +201,7 @@ public function get_theme_config()
     }
 
     /**
-     * Agrega el script de chat si está configurado en el tema (enable_chat y tawkto_embed_url).
+     * Agrega el script de chat si está configurado en el tema (fng_enable_chat y fng_tawkto_embed_url).
      *
      * @return string HTML/JS del widget de chat
      */
@@ -209,7 +209,7 @@ public function get_theme_config()
         global $USER;
 
         // Si el usuario no ha iniciado sesión o no tenemos URL del chat, no hacemos nada
-        if (!isloggedin() || empty($this->page->theme->settings->tawkto_embed_url)) { 
+        if (!isloggedin() || empty($this->page->theme->settings->fng_tawkto_embed_url)) { 
             return '';
         }
 
@@ -235,7 +235,7 @@ public function get_theme_config()
         (function(){
             var s1 = document.createElement(\"script\"), s0 = document.getElementsByTagName(\"script\")[0];
             s1.async = true;
-            s1.src = '" . $this->page->theme->settings->tawkto_embed_url . "';
+            s1.src = '" . $this->page->theme->settings->fng_tawkto_embed_url . "';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1, s0);
@@ -256,11 +256,18 @@ public function get_theme_config()
 
         try {
             // Get restricted roles from theme settings
-            $restricted_roles = $this->page->theme->settings->copypaste_roles;
+            $restricted_roles = isset($this->page->theme->settings->fng_copypaste_roles) 
+                ? $this->page->theme->settings->fng_copypaste_roles 
+                : [];
 
             // Return if no roles are restricted or user is admin
             if (empty($restricted_roles) || is_siteadmin()) {
                 return;
+            }
+
+            // Ensure restricted_roles is always an array
+            if (!is_array($restricted_roles)) {
+                $restricted_roles = explode(',', $restricted_roles);
             }
 
             // Get appropriate context
@@ -273,11 +280,6 @@ public function get_theme_config()
 
             if (!$context) {
                 return;
-            }
-
-            // Convert roles to array if needed
-            if (!is_array($restricted_roles)) {
-                $restricted_roles = explode(',', $restricted_roles);
             }
 
             // Check user roles
