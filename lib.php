@@ -105,7 +105,7 @@ function theme_fng_set_extra_img($theme) {
     $content = '';
 
     // Sets the login background image.
-    $loginimage = $theme->setting_file_url('loginimage', 'loginimage');
+    $loginimage = $theme->setting_file_url('fng_loginimage', 'fng_loginimage');
     if (!empty($loginimage)) {
         $content .= 'body.pagelayout-login #page { ';
         $content .= "background-image: url('$loginimage'); background-size: cover;";
@@ -133,11 +133,11 @@ function theme_fng_pluginfile($course, $cm, $context, $filearea, $args, $forcedo
     $theme = theme_config::load('fng');
 
     if ($context->contextlevel == CONTEXT_SYSTEM) {
-        // Áreas válidas fijas.
+        // Áreas válidas fijas con prefijo fng_
         $validfileareas = [
-            'loginimage',
-            'personalareaheader',
-            'mycoursesheader'
+            'fng_loginimage',
+            'fng_personalareaheader',
+            'fng_mycoursesheader'
         ];
         
         // Si el área es una de las válidas, se sirve el archivo.
@@ -145,11 +145,10 @@ function theme_fng_pluginfile($course, $cm, $context, $filearea, $args, $forcedo
             return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         }
         
-        // Si el área corresponde a una imagen del slider (usando el prefijo "loging_"),
-        // se procesa para extraer el número y servir el archivo.
-        if (strpos($filearea, 'loging_slideimage') === 0) {
-            $slide_number = substr($filearea, strlen('loging_slideimage'));
-            return $theme->setting_file_serve("loging_slideimage{$slide_number}", $args, $forcedownload, $options);
+        // Si el área corresponde a una imagen del slider
+        if (strpos($filearea, 'fng_slideimage') === 0) {
+            $slide_number = substr($filearea, strlen('fng_slideimage'));
+            return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
         }
     }
 
