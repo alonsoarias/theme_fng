@@ -1,10 +1,10 @@
 <?php
-
 /**
- * fng.
+ * Theme FNG.
  *
  * @package    theme_fng
- * @copyright  Creado por Ing Pablo A Pico - @pabloapico exclusivamente para plataformas Moodle creadas y soportadas por fng - Sistemas y Publicidad
+ * @copyright  2025 Soporte fng <soporte@fng.co>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -102,19 +102,8 @@ function theme_fng_set_extra_img($theme) {
         $css = "#top-footer {background-image: url('$topfooterimg');}";
     }
 
-    $content = '';
-
-    // Sets the login background image.
-    $loginimage = $theme->setting_file_url('fng_loginimage', 'fng_loginimage');
-    if (!empty($loginimage)) {
-        $content .= 'body.pagelayout-login #page { ';
-        $content .= "background-image: url('$loginimage'); background-size: cover;";
-        $content .= ' }';
-    }
-
     // Always return the background image with the scss when we have it.
-    return !empty($theme->settings->scss) ? $theme->settings->scss . ' ' . $content : $content;
-    return $css;
+    return !empty($theme->settings->scss) ? $theme->settings->scss . ' ' . $css : $css;
 }
 
 /**
@@ -135,7 +124,6 @@ function theme_fng_pluginfile($course, $cm, $context, $filearea, $args, $forcedo
     if ($context->contextlevel == CONTEXT_SYSTEM) {
         // Áreas válidas fijas con prefijo fng_
         $validfileareas = [
-            'fng_loginimage',
             'fng_personalareaheader',
             'fng_mycoursesheader'
         ];
