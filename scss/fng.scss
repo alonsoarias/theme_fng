@@ -569,7 +569,7 @@ a.nav-link {
 
 /* Footer */
 #page-footer {
-    background-color: darken($color-primary, 10%); // Oscurece el color primario para el fondo
+    background-color: $color-secondary; /* Reemplazado con $color-secondary */
 }
 
 /* Top Footer */
