@@ -60,7 +60,7 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
-    $name = 'theme_fng/generalnoticemode';
+    $name = 'theme_fng/fng_generalnoticemode';
     $title = get_string('generalnoticemode', 'theme_fng');
     $description = get_string('generalnoticemodedesc', 'theme_fng');
     $default = 'off';
@@ -73,7 +73,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    $name = 'theme_fng/generalnotice';
+    $name = 'theme_fng/fng_generalnotice';
     $title = get_string('generalnotice', 'theme_fng');
     $description = get_string('generalnoticedesc', 'theme_fng');
     $default = '<strong>Estamos trabajando</strong> para mejorar...';
@@ -88,7 +88,7 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
-    $name = 'theme_fng/enable_chat';
+    $name = 'theme_fng/fng_enable_chat';
     $title = get_string('enable_chat', 'theme_fng');
     $description = get_string('enable_chatdesc', 'theme_fng');
     $default = 0;
@@ -96,7 +96,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    $name = 'theme_fng/tawkto_embed_url';
+    $name = 'theme_fng/fng_tawkto_embed_url';
     $title = get_string('tawkto_embed_url', 'theme_fng');
     $description = get_string('tawkto_embed_urldesc', 'theme_fng');
     $default = '';
@@ -111,7 +111,7 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
-    $name = 'theme_fng/accessibility_widget';
+    $name = 'theme_fng/fng_accessibility_widget';
     $title = get_string('accessibility_widget', 'theme_fng');
     $description = get_string('accessibility_widgetdesc', 'theme_fng');
     $default = 0;
@@ -126,7 +126,7 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
-    $name = 'theme_fng/copypaste_prevention';
+    $name = 'theme_fng/fng_copypaste_prevention';
     $title = get_string('copypaste_prevention', 'theme_fng');
     $description = get_string('copypaste_preventiondesc', 'theme_fng');
     $default = 0;
@@ -141,7 +141,7 @@ if ($ADMIN->fulltree) {
         $roles_array[$role->id] = $role->localname;
     }
 
-    $name = 'theme_fng/copypaste_roles';
+    $name = 'theme_fng/fng_copypaste_roles';
     $title = get_string('copypaste_roles', 'theme_fng');
     $description = get_string('copypaste_rolesdesc', 'theme_fng');
     $default = [5]; // Rol de estudiante por defecto
@@ -157,10 +157,10 @@ if ($ADMIN->fulltree) {
     $page = new admin_settingpage('theme_fng_login', get_string('loginsettings', 'theme_fng'));
 
     // Imagen de Login
-    $name = 'theme_fng/loginimage';
+    $name = 'theme_fng/fng_loginimage';
     $title = get_string('loginimage', 'theme_fng');
     $description = get_string('loginimagedesc', 'theme_fng', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'loginimage', 0, [
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fng_loginimage', 0, [
         'subdirs' => 0,
         'accepted_types' => 'web_image'
     ]);
@@ -168,10 +168,10 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Color de Fondo del Login
-    $name = 'theme_fng/loginbg_color';
+    $name = 'theme_fng/fng_loginbg_color';
     $title = get_string('loginbg_color', 'theme_fng');
     $description = get_string('loginbg_colordesc', 'theme_fng');
-    $setting = new admin_setting_configcolourpicker($name, $title, $description, '#b2cdea');
+    $setting = new admin_setting_configcolourpicker($name, $title, $description, '#045091'); // Color azul FNG
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
@@ -182,27 +182,34 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
-    // Número de slides (se utiliza el prefijo "loging_" para evitar duplicidad)
-    $name = 'theme_fng/loging_numberofslides';
+    // Número de slides
+    $name = 'theme_fng/fng_numberofslides';
     $title = get_string('numberofslides', 'theme_fng');
     $description = get_string('numberofslides_desc', 'theme_fng');
     $choices = range(1, 5);
     $page->add(new admin_setting_configselect($name, $title, $description, 1, array_combine($choices, $choices)));
 
     // Settings para cada slide
-    $numslides = get_config('theme_fng', 'loging_numberofslides') ?: 1;
+    $numslides = get_config('theme_fng', 'fng_numberofslides') ?: 1;
     for ($i = 1; $i <= $numslides; $i++) {
+        // Encabezado para cada slide
+        $page->add(new admin_setting_heading(
+            'theme_fng/slideheading' . $i,
+            get_string('slideheading', 'theme_fng', $i),
+            ''
+        ));
+        
         // Título del slide
-        $name = 'theme_fng/loging_slidetitle' . $i;
+        $name = 'theme_fng/fng_slidetitle' . $i;
         $title = get_string('slidetitle', 'theme_fng', $i);
-        $description = get_string('slidetitle_desc', 'theme_fng', $i);
+        $description = get_string('slidetitledesc', 'theme_fng', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
 
         // Imagen del slide
-        $name = 'theme_fng/loging_slideimage' . $i;
+        $name = 'theme_fng/fng_slideimage' . $i;
         $title = get_string('slideimage', 'theme_fng', $i);
         $description = get_string('slideimage_desc', 'theme_fng', $i);
-        $setting = new admin_setting_configstoredfile($name, $title, $description, 'loging_slideimage' . $i, 0, [
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'fng_slideimage' . $i, 0, [
             'subdirs' => 0,
             'accepted_types' => ['web_image']
         ]);
@@ -210,14 +217,14 @@ if ($ADMIN->fulltree) {
         $page->add($setting);
 
         // URL del slide
-        $name = 'theme_fng/loging_slideurl' . $i;
+        $name = 'theme_fng/fng_slideurl' . $i;
         $title = get_string('slideurl', 'theme_fng', $i);
         $description = get_string('slideurldesc', 'theme_fng', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
     }
 
     // Intervalo del carrusel
-    $name = 'theme_fng/carouselinterval';
+    $name = 'theme_fng/fng_carouselinterval';
     $title = get_string('carouselinterval', 'theme_fng');
     $description = get_string('carouselintervaldesc', 'theme_fng');
     $setting = new admin_setting_configtext($name, $title, $description, '5000');
@@ -239,7 +246,7 @@ if ($ADMIN->fulltree) {
     ));
 
     // Toggle de visibilidad del Personal Area Header
-    $name = 'theme_fng/show_personalareaheader';
+    $name = 'theme_fng/fng_show_personalareaheader';
     $title = get_string('show_personalareaheader', 'theme_fng');
     $description = get_string('show_personalareaheaderdesc', 'theme_fng');
     $default = 1;
@@ -252,10 +259,10 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Imagen del Personal Area Header
-    $name = 'theme_fng/personalareaheader';
+    $name = 'theme_fng/fng_personalareaheader';
     $title = get_string('personalareaheader', 'theme_fng');
     $description = get_string('personalareaheaderdesc', 'theme_fng', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'personalareaheader', 0, [
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fng_personalareaheader', 0, [
         'subdirs' => 0,
         'accepted_types' => 'web_image'
     ]);
@@ -270,7 +277,7 @@ if ($ADMIN->fulltree) {
     ));
 
     // Toggle de visibilidad del My Courses Header
-    $name = 'theme_fng/show_mycoursesheader';
+    $name = 'theme_fng/fng_show_mycoursesheader';
     $title = get_string('show_mycoursesheader', 'theme_fng');
     $description = get_string('show_mycoursesheaderdesc', 'theme_fng');
     $default = 1;
@@ -283,10 +290,10 @@ if ($ADMIN->fulltree) {
     $page->add($setting);
 
     // Imagen del My Courses Header
-    $name = 'theme_fng/mycoursesheader';
+    $name = 'theme_fng/fng_mycoursesheader';
     $title = get_string('mycoursesheader', 'theme_fng');
     $description = get_string('mycoursesheaderdesc', 'theme_fng', $a);
-    $setting = new admin_setting_configstoredfile($name, $title, $description, 'mycoursesheader', 0, [
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'fng_mycoursesheader', 0, [
         'subdirs' => 0,
         'accepted_types' => 'web_image'
     ]);
@@ -301,7 +308,7 @@ if ($ADMIN->fulltree) {
     $page = new admin_settingpage('theme_fng_footer', get_string('footersettings', 'theme_fng'));
 
     // Visibilidad del Footer
-    $name = 'theme_fng/hidefootersections';
+    $name = 'theme_fng/fng_hidefootersections';
     $title = get_string('hidefootersections', 'theme_fng');
     $description = get_string('hidefootersections_desc', 'theme_fng');
     $default = 0;
@@ -319,7 +326,7 @@ if ($ADMIN->fulltree) {
         ''
     ));
 
-    $name = 'theme_fng/abouttitle';
+    $name = 'theme_fng/fng_abouttitle';
     $title = get_string('abouttitle', 'theme_fng');
     $description = get_string('abouttitledesc', 'theme_fng');
     $default = get_string('abouttitle_default', 'theme_fng');
@@ -327,7 +334,7 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    $name = 'theme_fng/abouttext';
+    $name = 'theme_fng/fng_abouttext';
     $title = get_string('abouttext', 'theme_fng');
     $description = get_string('abouttextdesc', 'theme_fng');
     $default = get_string('abouttext_default', 'theme_fng');
