@@ -26,69 +26,85 @@
     This template renders the top navbar.
 }}
 
-<!-- Navbar de Gobierno - Implementación con Bootstrap -->
+<!-- Navbar de Gobierno - Implementación corregida -->
 <div class="gov-navbar fixed-top">
     <!-- Barra superior azul con logo -->
     <div class="gov-navbar-top">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="gov-logo">
-                        <a href="https://www.gov.co/" target="_blank">
-                            <img src="{{config.wwwroot}}/theme/fng/pix/logo-govco.webp" alt="Logo GOV.CO">
-                        </a>
-                    </div>
-                </div>
+            <div class="gov-logo">
+                <a href="https://www.gov.co/" target="_blank" rel="noopener noreferrer" aria-label="Portal GOV.CO">
+                    <img src="{{config.wwwroot}}/theme/fng/pix/logo-govco.webp" 
+                         alt="Logo GOV.CO" 
+                         class="img-fluid"
+                         loading="lazy">
+                </a>
             </div>
         </div>
     </div>
     
-    <!-- Barra inferior azul oscuro con menú -->
+    <!-- Barra de menú principal -->
     <div class="gov-navbar-menu">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Botón hamburguesa para móviles -->
-                    <button class="navbar-toggler gov-menu-toggle d-md-none" type="button" aria-label="Menú de gobierno">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    
-                    <ul class="gov-menu" id="govMenu">
-                        <li class="gov-menu-item">
-                            <a href="https://www.fng.gov.co/transparencia" class="gov-link" target="_blank">
-                                <span class="gov-link-text">Transparencia</span>
-                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="gov-menu-item">
-                            <a href="https://www.fng.gov.co/participa" class="gov-link" target="_blank">
-                                <span class="gov-link-text">Participa</span>
-                                <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li class="gov-menu-item">
-                            <a href="https://www.fng.gov.co/atencion-y-servicios" class="gov-link" target="_blank">
-                                <span class="gov-link-text">Atención y servicios a la ciudadanía</span>
-                                <i class="fa fa-question-circle" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="container position-relative">
+            <button class="gov-menu-toggle navbar-toggler" 
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#govMenu"
+                    aria-controls="govMenu" 
+                    aria-expanded="false"
+                    aria-label="{{#str}}togglemenu, theme_fng{{/str}}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <ul class="gov-menu collapse navbar-collapse" id="govMenu">
+                <li class="gov-menu-item nav-item">
+                    <a href="https://www.fng.gov.co/transparencia" 
+                       class="gov-link nav-link" 
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span class="gov-link-text">Transparencia</span>
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="gov-menu-item nav-item">
+                    <a href="https://www.fng.gov.co/participa" 
+                       class="gov-link nav-link" 
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span class="gov-link-text">Participa</span>
+                        <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="gov-menu-item nav-item">
+                    <a href="https://www.fng.gov.co/atencion-y-servicios" 
+                       class="gov-link nav-link" 
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <span class="gov-link-text">Atención y servicios</span>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
 
-<nav class="navbar fixed-top navbar-expand {{navlayout}} {{#homepagetransparentheader}}trasnparent-home-nav{{/homepagetransparentheader}}" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<!-- Navbar principal de Moodle - Posición corregida -->
+<nav class="navbar fixed-top navbar-expand {{navlayout}} {{#homepagetransparentheader}}trasnparent-home-nav{{/homepagetransparentheader}}" 
+     style="top: 90px !important;" 
+     aria-label="{{#str}}sitemenubar, admin{{/str}}">
 
-    <a href="{{{ config.homeurl }}}" class="navbar-brand d-none d-md-flex align-items-center m-0 aabtn" aria-label="{{ sitename }} - {{#str}}brandname, theme_remui{{/str}}" title="{{ sitename }}">
+    <!-- Logo de la institución -->
+    <a href="{{{ config.homeurl }}}" 
+       class="navbar-brand d-none d-md-flex align-items-center m-0 aabtn" 
+       aria-label="{{ sitename }} - {{#str}}brandname, theme_remui{{/str}}"
+       title="{{ sitename }}">
         {{#output.get_branding_context}}
             {{#logourl}}
-                <img src="{{ logourl }}" class="navbar-brand-logo logo">
+                <img src="{{ logourl }}" class="navbar-brand-logo logo" alt="{{sitename}}">
             {{/logourl}}
 
             {{#logominiurl}}
-                <img src="{{ logominiurl }}" class="navbar-brand-logo logomini">
+                <img src="{{ logominiurl }}" class="navbar-brand-logo logomini" alt="{{sitename}}">
             {{/logominiurl}}
 
             {{#icononly}}
@@ -106,9 +122,14 @@
         {{/output.get_branding_context}}
     </a>
 
+    <!-- Contenido del navbar -->
     <div class="sub-nav">
         <div class="navbar-toggler-wrapper">
-            <button class="navbar-toggler aabtn d-block d-lg-none border-0 h-100 p-0" data-toggler="drawers" data-action="toggle" data-target="theme_remui-drawers-primary">
+            <button class="navbar-toggler aabtn d-block d-lg-none border-0 h-100 p-0" 
+                    data-toggler="drawers" 
+                    data-action="toggle" 
+                    data-target="theme_remui-drawers-primary"
+                    aria-label="{{#str}}togglemenu, theme_fng{{/str}}">
                 <span class="edw-icon edw-icon-Mobile-menu"></span>
                 <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
             </button>
@@ -120,43 +141,49 @@
             </div>
         {{/primarymoremenu}}
 
+        <!-- Elementos de navegación del usuario -->
         <div id="usernavigation" class="navbar-nav ml-auto">
             {{#edwisermenu}}
                 <div class="edwiser-navigation">
                     {{> core/moremenu}}
                 </div>
             {{/edwisermenu}}
+            
             {{# output.edw_search_box }}
                 {{{ output.edw_search_box }}}
             {{/output.edw_search_box}}
+            
             {{#langmenu}}
                 {{> theme_remui/language_menu }}
             {{/langmenu}}
+            
             {{{ output.navbar_plugin_output }}}
 
             {{#usermenu}}
             <div class="d-flex usermenu-wrapper">
-                <div class="divider  h-75 align-self-center"></div>
+                <div class="divider h-75 align-self-center"></div>
                 <div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
                     {{> core/user_menu }}
                 </div>
                 {{#isloggedin}}
-                <div class="divider  h-75 align-self-center"></div>
+                <div class="divider h-75 align-self-center"></div>
                 {{/isloggedin}}
             </div>
             {{/usermenu}}
 
             {{#canenabledm}}
                 <div class="nav-darkmode nav-item d-flex align-items-center" data-dm="disabled">
-                    <a class="dm-toggle text-decoration-none">
+                    <a class="dm-toggle text-decoration-none" role="button" aria-label="{{#str}}toggledarkmode, theme_fng{{/str}}">
                         {{^dmanimate}}
-                        <span class="edw-icon edw-icon-Dark-mode darkmodeicon"  title="{{#str}}darkmodetitilestring, theme_remui{{/str}}"></span>
-                        <span class="edw-icon edw-icon-Light-mode lightmodeicon"  title="{{#str}}lightmodetitlestring, theme_remui{{/str}}"></span>
+                        <span class="edw-icon edw-icon-Dark-mode darkmodeicon" title="{{#str}}darkmodetitilestring, theme_remui{{/str}}"></span>
+                        <span class="edw-icon edw-icon-Light-mode lightmodeicon" title="{{#str}}lightmodetitlestring, theme_remui{{/str}}"></span>
                         {{/dmanimate}}
 
                         {{#dmanimate}}
-                        <img src="{{config.wwwroot}}/theme/remui/pix/darkmode.gif" style="width:50px;height:50px;"/>
-                        <span class="edw-icon edw-icon-Light-mode lightmodeicon"  title="{{#str}}lightmodetitlestring, theme_remui{{/str}}"></span>
+                        <img src="{{config.wwwroot}}/theme/remui/pix/darkmode.gif" 
+                             alt="{{#str}}darkmodetitilestring, theme_remui{{/str}}"
+                             style="width:50px;height:50px;">
+                        <span class="edw-icon edw-icon-Light-mode lightmodeicon" title="{{#str}}lightmodetitlestring, theme_remui{{/str}}"></span>
                         {{/dmanimate}}
                     </a>
                 </div>
@@ -164,8 +191,8 @@
             {{{ output.edit_switch }}}
         </div>
     </div>
-
 </nav>
+
 {{#show_license_notice}}
 {{{show_license_notice}}}
 {{/show_license_notice}}
