@@ -1,16 +1,16 @@
 <?php
 // This file is part of Moodle - http://moodle.org/
-// 
+//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// 
+//
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -191,27 +191,13 @@ if ($ADMIN->fulltree) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $page->add($setting);
         
-        // Mostrar título del slide (opcional)
-        $name = 'theme_fng/fng_slideshowtitle' . $i;
-        $title = get_string('slideshowtitle', 'theme_fng', $i);
-        $description = get_string('slideshowtitle_desc', 'theme_fng', $i);
-        $default = 0;
-        $page->add(new admin_setting_configcheckbox($name, $title, $description, $default));
-        
-        // Título del slide (solo se usará si se activa la opción anterior)
+        // Título del slide (opcional)
         $name = 'theme_fng/fng_slidetitle' . $i;
         $title = get_string('slidetitle', 'theme_fng', $i);
         $description = get_string('slidetitledesc', 'theme_fng', $i);
         $page->add(new admin_setting_configtext($name, $title, $description, ''));
         
-        // Usar enlace en el slide (opcional)
-        $name = 'theme_fng/fng_slideenableurl' . $i;
-        $title = get_string('slideenableurl', 'theme_fng', $i);
-        $description = get_string('slideenableurl_desc', 'theme_fng', $i);
-        $default = 0;
-        $page->add(new admin_setting_configcheckbox($name, $title, $description, $default));
-        
-        // URL del slide (solo se usará si se activa la opción anterior)
+        // URL del slide (opcional)
         $name = 'theme_fng/fng_slideurl' . $i;
         $title = get_string('slideurl', 'theme_fng', $i);
         $description = get_string('slideurldesc', 'theme_fng', $i);
