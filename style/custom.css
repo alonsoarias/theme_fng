@@ -1,28 +1,34 @@
-/* Footer Styles */
-.my-credit-footer-wrapper {
-    background-color: $color-lightgray;
-    color: $color-primary;
-    font-size: 15px;
+/**
+ * FNG Theme - Custom CSS
+ * Complemento para el tema FNG de Moodle
+ * 
+ * Las variables SCSS están ya definidas en _variables.scss y custom_variables.scss
+ * Este archivo proporciona sobreescrituras y personalizaciones específicas
+ */
+
+/* =============================================================================
+   1. ESTILOS GENERALES Y LAYOUT
+   ============================================================================= */
+
+/* Ajustes para el body */
+body {
+    padding-top: 162px !important; /* Actualizado a 162px (90px + altura del navbar de Moodle) */
 }
 
-a.my-credit-link,
-a.my-credit-link:hover {
-    color: $color-primary;
-}
-
-#page-header.hasbackground.design-1 .header-main-section .category .badge {
-    color: white;
-    background-color: $green;
+/* Posiciones y dimensiones generales */
+#page-header.hasbackground.design-1 {
+    min-height: 270px !important;
 }
 
 .position-absolute.w-100.h-100 {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.0) -5%, transparent 120%) !important;
 }
 
-#page-header.hasbackground.design-1 {
-    min-height: 270px !important;
-}
+/* =============================================================================
+   2. NAVEGACIÓN Y HEADER
+   ============================================================================= */
 
+/* Menu Topic ajustes */
 #format_menutopic_menu .navbar-brand {
     display: none !important;
 }
@@ -32,8 +38,157 @@ div#navbarmenutopic {
     height: 80px !important;
 }
 
+/* Navbar de Gobierno (GOV.CO) */
+.gov-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1031; /* Más alto que el navbar de Moodle */
+    font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    height: 90px;
+}
+
+.gov-navbar-top {
+    background-color: $fng-blue-dark;
+    height: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.gov-logo {
+    height: 30px;
+    margin-top: 4px;
+}
+
+.gov-logo img {
+    height: 30px;
+    width: auto;
+}
+
+.gov-navbar-menu {
+    background: darken($fng-blue-dark, 10%);
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+.gov-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.gov-menu-item {
+    margin-right: 25px;
+    position: relative;
+}
+
+.gov-menu-item:last-child {
+    margin-right: 0;
+}
+
+.gov-link {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.gov-link:hover, 
+.gov-link:focus, 
+.gov-link:active {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: $fng-blue-medium;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+.gov-link i {
+    margin-left: 8px;
+    font-size: 18px;
+    color: $fng-yellow;
+}
+
+.gov-link:focus-visible {
+    outline: 2px solid $fng-yellow;
+    outline-offset: 2px;
+}
+
+/* Ajustes para el navbar de Moodle */
+.navbar.fixed-top {
+    top: 90px !important;
+    position: fixed !important;
+}
+
+html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
+    top: 90px !important;
+}
+
+.navbar-wrapper .navbar,
+#page-header + .navbar,
+#wdm-wrapper-navbar,
+.page-header + .navbar {
+    top: 90px !important;
+}
+
+/* Moodle navbar específicos */
+.navbar .edw-icon {
+    color: $color-primary;
+}
+
+.navbar [data-key="recentcourses"] {
+    display: none;
+}
+
+/* Orden de navegación primaria */
+.primary-navigation .nav.more-nav {
+    display: flex;
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="coursecat"] {
+    order: 1; /* Cursos */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="myhome"] {
+    order: 2; /* Área personal */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="mycourses"] {
+    order: 3; /* Mis cursos */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="home"] {
+    order: 4; /* Página principal */
+}
+
+.primary-navigation .nav.more-nav .nav-item[data-key="siteadminnode"] {
+    order: 5; /* Administración del sitio */
+}
+
+.primary-navigation .nav.more-nav .dropdownmoremenu {
+    order: 6;
+}
+
+/* =============================================================================
+   3. FOOTER
+   ============================================================================= */
+
 #page-footer .copyright {
-    background-color: $my-gris; /* Reemplazado con $my-gris */
+    background-color: $my-gris;
     color: $color-primary;
     text-align: center;
     min-height: inherit;
@@ -41,7 +196,7 @@ div#navbarmenutopic {
 }
 
 #top-footer {
-    background-color: $color-primary; /* Azul oscuro */
+    background-color: $color-primary;
     color: $color-white;
     margin: 0 -15px;
 }
@@ -54,10 +209,43 @@ div#navbarmenutopic {
 
 #top-footer h3 {
     margin-bottom: 15px;
-    /* Espacio debajo del título */
 }
 
-/* Button Styles */
+.my-credit-footer-wrapper {
+    background-color: $color-lightgray;
+    color: $color-primary;
+    font-size: 15px;
+}
+
+a.my-credit-link,
+a.my-credit-link:hover {
+    color: $color-primary;
+}
+
+#page-footer .footer-container hr,
+.progress-bar {
+    background-color: $color-primary;
+    border-top: 1px solid $color-white;
+}
+
+.about-text-content {
+    text-align: justify;
+    padding: 0 15px;
+}
+
+.about-text-content h4.data {
+    color: #ffffff;
+}
+
+.about-text-content a.link-1 {
+    color: #ffffff;
+}
+
+/* =============================================================================
+   4. BOTONES
+   ============================================================================= */
+
+/* Estilos de botones generales */
 .btn-link,
 .btn-link:hover,
 .btn-outline-primary,
@@ -66,12 +254,12 @@ div#navbarmenutopic {
 }
 
 .btn-link {
-    color: $color-secondary; /* Azul oscuro */
+    color: $color-secondary;
     border-color: $color-primary;
 }
 
 .btn-link:hover {
-    color: $color-primary; /* Rojo */
+    color: $color-primary;
     border-color: $color-secondary;
 }
 
@@ -86,7 +274,138 @@ div#navbarmenutopic {
     border-color: darken($color-secondary, 10%);
 }
 
-/* Badge Styles */
+/* Primary button styling */
+.btn-primary {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: #ffffff;
+}
+
+.btn-primary .fa,
+.btn-primary .edw-icon {
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #ffffff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: #ffffff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):focus,
+.btn-primary:not(:disabled):not(.disabled).focus {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #ffffff;
+}
+
+/* Secondary button styling */
+.btn-secondary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #ffffff;
+}
+
+.btn-secondary .fa,
+.btn-secondary .edw-icon {
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: #ffffff;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-secondary.dropdown-toggle {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #ffffff;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):focus,
+.btn-secondary:not(:disabled):not(.disabled).focus {
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+    color: #ffffff;
+}
+
+/* Botones Específicos */
+button.btn.btn-primary.icon-no-margin.p-0 {
+    background-color: $color-secondary;
+    border-color: white;
+    color: white;
+}
+
+button.btn.btn-primary.icon-no-margin.p-0:hover {
+    background-color: $color-secondary;
+    border-color: white;
+    color: white !important;
+}
+
+button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active,
+button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled).active,
+button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active:focus,
+.show > button.btn.btn-primary.icon-no-margin.p-0.dropdown-toggle {
+    background-color: darken($color-secondary, 10%);
+    border-color: white;
+    color: white;
+}
+
+button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active .fa,
+button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active .edw-icon {
+    color: white;
+}
+
+/* Floating Buttons */
+.floating-buttons-wrapper {
+    position: fixed;
+    bottom: 80px;
+    right: auto;
+    left: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-buttons-wrapper > .btn-floating {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 48px;
+    margin-left: inherit;
+    transition: max-width 0.5s ease-in-out;
+    border-color: white;
+}
+
+.btn-floating {
+    border-color: white;
+}
+
+/* =============================================================================
+   5. BADGES Y ETIQUETAS
+   ============================================================================= */
+
+#page-header.hasbackground.design-1 .header-main-section .category .badge {
+    color: white;
+    background-color: $green;
+}
+
 .badge-info,
 .badge-info:hover,
 .badge-success,
@@ -112,66 +431,29 @@ div#navbarmenutopic {
     background-color: darken($green, 10%);
 }
 
-/* List and Link Styles */
-/* Eliminado: #course-category-listings .listitem[data-selected="1"] { ... } */
-
-.text-info,
-.users-list-name,
-#page-header #page-navbar nav ol.breadcrumb .breadcrumb-item a {
-    color: $color-primary !important;
+span.badge.badge-info {
+    color: white;
 }
 
-/* Calendar Styles */
-.maincalendar .calendarmonth td.today .day-number-circle {
-    color: $color-white;
+span.badge.rounded-pill.bg-secondary.text-dark,
+span.badge.bg-secondary.text-dark {
+    color: white !important;
+}
+
+/* =============================================================================
+   6. BLOQUES Y NAVEGACIÓN
+   ============================================================================= */
+
+/* Estilo para el courseindex-section-title */
+#theme_remui-drawers-courseindex .drawercontent #courseindex #courseindex-content .courseindex .courseindex-section .courseindex-section-title.courseindex-item.d-flex.align-items-center.dropready {
+    padding: 10px 24px;
+    color: #ffffff;
     background-color: $color-primary;
+    border-radius: 0;
+    justify-content: space-between;
 }
 
-/* Miscellaneous Styles */
-#page-footer .footer-container hr,
-.progress-bar {
-    background-color: $color-primary;
-    border-top: 1px solid $color-white;
-}
-
-.about-text-content {
-    text-align: justify;
-    padding: 0 15px;
-}
-
-@media (max-width: 768px) {
-    .about-text-content {
-        padding: 0 10px;
-        /* Menor padding en dispositivos más pequeños */
-    }
-}
-
-/* Autocomplete Styles */
-.form-autocomplete-suggestions li:hover,
-.form-autocomplete-suggestions li:focus,
-.form-autocomplete-suggestions li[aria-selected="true"] {
-    padding-left: 12px;
-}
-
-.form-autocomplete-suggestions li:hover {
-    background-color: $color-primary; /* Cambiado a $color-primary según botón */
-    color: $color-white;
-    border-left: 4px solid $color-primary;
-}
-
-.form-autocomplete-suggestions li:focus {
-    background-color: $color-lightgray-dimmed; /* Definir o ajustar según necesidad */
-    color: $color-primary;
-    border-left: 4px solid $color-secondary-dark;
-}
-
-.form-autocomplete-suggestions li[aria-selected="true"] {
-    background-color: $color-primary;
-    color: $color-white;
-    border-left: 4px solid $color-secondary;
-}
-
-/* Navigation Styles */
+/* Navigation Pills */
 .nav-pills-custom .nav-link {
     position: relative;
 }
@@ -181,7 +463,7 @@ div#navbarmenutopic {
         content: '';
         display: block;
         border-top: 8px solid transparent;
-        border-left: 10px solid $color-primary; /* Reemplazado con $color-primary */
+        border-left: 10px solid $color-primary;
         border-bottom: 8px solid transparent;
         position: absolute;
         top: 50%;
@@ -195,7 +477,46 @@ div#navbarmenutopic {
     opacity: 1;
 }
 
-/* Collapsible Link Styles */
+/* Autocomplete Styles */
+.form-autocomplete-suggestions li:hover,
+.form-autocomplete-suggestions li:focus,
+.form-autocomplete-suggestions li[aria-selected="true"] {
+    padding-left: 12px;
+}
+
+.form-autocomplete-suggestions li:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    border-left: 4px solid $color-primary;
+}
+
+.form-autocomplete-suggestions li:focus {
+    background-color: $color-lightgray-dimmed;
+    color: $color-primary;
+    border-left: 4px solid $color-secondary-dark;
+}
+
+.form-autocomplete-suggestions li[aria-selected="true"] {
+    background-color: $color-primary;
+    color: $color-white;
+    border-left: 4px solid $color-secondary;
+}
+
+/* Personalizaciones Próximos Eventos */
+.block_calendar_upcoming .event {
+    border-left: 2px solid #ccc;
+    padding-left: 5px;
+}
+
+.block_calendar_upcoming .event.my-event-urgent {
+    border-color: #f51f25;
+}
+
+.block_calendar_upcoming .event.my-event-priority {
+    border-color: #f89406;
+}
+
+/* Collapsible Links */
 .collapsible-link,
 .collapsible-link::before,
 .collapsible-link[aria-expanded='true']::before {
@@ -217,7 +538,7 @@ div#navbarmenutopic {
     content: '\f106';
 }
 
-/* Pagination Styles */
+/* Paginación */
 .page-link,
 .page-link:hover,
 .page-item.active .page-link {
@@ -238,206 +559,22 @@ div#navbarmenutopic {
     border-color: $color-primary;
 }
 
-/* Floating Buttons */
-.floating-buttons-wrapper {
-    position: fixed;
-    bottom: 80px;
-    right: auto;
-    left: 14px;
-    display: flex;
-    flex-direction: column;
+/* Texto y Enlaces */
+.text-info,
+.users-list-name,
+#page-header #page-navbar nav ol.breadcrumb .breadcrumb-item a {
+    color: $color-primary !important;
 }
 
-/*20240926*/
-.floating-buttons-wrapper > .btn-floating {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 48px;
-    margin-left: inherit;
-    transition: max-width 0.5s ease-in-out;
-    border-color: white;
+/* Calendarios */
+.maincalendar .calendarmonth td.today .day-number-circle {
+    color: $color-white;
+    background-color: $color-primary;
 }
 
-/* Nueva regla para courseindex-section-title con clases adicionales */
-#theme_remui-drawers-courseindex .drawercontent #courseindex #courseindex-content .courseindex .courseindex-section .courseindex-section-title.courseindex-item.d-flex.align-items-center.dropready {
-    padding: 10px 24px;
-    color: #ffffff;
-    background-color: $color-primary; /* Aplicado $color-primary */
-    border-radius: 0;
-    justify-content: space-between;
-}
-
-/* Botones */
-
-/* Primary button styling */
-.btn-primary {
-    background-color: $color-secondary; // Rojo para el fondo
-    border-color: $color-secondary; // Rojo para el borde
-    color: #ffffff; // Blanco para el texto
-
-    .fa,
-    .edw-icon {
-        color: #ffffff; // Blanco para los iconos
-    }
-
-    &:hover {
-        background-color: $color-primary; // Azul oscuro en hover
-        border-color: $color-primary; // Azul oscuro para el borde en hover
-        color: #ffffff; // Blanco para el texto en hover
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active,
-    &:not(:disabled):not(.disabled):active:focus,
-    .show > &.dropdown-toggle {
-        background-color: $color-secondary; // Rojo en activo
-        border-color: $color-secondary; // Rojo en activo
-        color: #ffffff; // Blanco en activo
-    }
-
-    &:not(:disabled):not(.disabled):focus,
-    &:not(:disabled):not(.disabled).focus {
-        background-color: $color-primary; // Azul oscuro en foco
-        border-color: $color-primary; // Azul oscuro en foco
-        color: #ffffff; // Blanco en foco
-    }
-}
-
-/* Secondary button styling */
-.btn-secondary {
-    background-color: $color-primary; // Azul oscuro para el fondo
-    border-color: $color-primary; // Azul oscuro para el borde
-    color: #ffffff; // Blanco para el texto
-
-    .fa,
-    .edw-icon {
-        color: #ffffff; // Blanco para los iconos
-    }
-
-    &:hover {
-        background-color: $color-secondary; // Rojo en hover
-        border-color: $color-secondary; // Rojo en hover
-        color: #ffffff; // Blanco para el texto en hover
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active,
-    &:not(:disabled):not(.disabled):active:focus,
-    .show > &.dropdown-toggle {
-        background-color: $color-primary; // Azul oscuro en activo
-        border-color: $color-primary; // Azul oscuro en activo
-        color: #ffffff; // Blanco en activo
-    }
-
-    &:not(:disabled):not(.disabled):focus,
-    &:not(:disabled):not(.disabled).focus {
-        background-color: $color-secondary; // Rojo en foco
-        border-color: $color-secondary; // Rojo en foco
-        color: #ffffff; // Blanco en foco
-    }
-}
-
-/* Botones Específicos */
-button.btn.btn-primary.icon-no-margin.p-0 {
-    background-color: $color-secondary; // Rojo para el fondo
-    border-color: white; // Color blanco para el borde
-    color: white; // Color del texto
-
-    &:hover {
-        background-color: $color-secondary; // Rojo para el fondo en hover
-        border-color: white; // Mantiene el borde blanco en hover
-        color: white !important; // Color del texto en hover
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active,
-    &:not(:disabled):not(.disabled):active:focus,
-    .show > &.dropdown-toggle {
-        background-color: darken($color-secondary, 10%); // Oscurece el color secundario para el estado activo
-        border-color: white; // Mantiene el borde blanco para el estado activo
-        color: white; // Mantiene el texto blanco para mejor visibilidad
-
-        .fa,
-        .edw-icon {
-            color: white; // Mantiene el color de los íconos en blanco
-        }
-    }
-}
-
-.btn-floating {
-    border-color: white;
-}
-
-.btn-primary .fa,
-.btn-primary .edw-icon {
-    color: white !important;
-}
-
-.navbar .edw-icon{
-    color: $color-primary;
-}
-/* Personalizaciones Próximos Eventos */
-
-.block_calendar_upcoming .event {
-    border-left: 2px solid #ccc;
-    padding-left: 5px;
-}
-
-.block_calendar_upcoming .event.my-event-urgent {
-    border-color: #f51f25;
-}
-
-.block_calendar_upcoming .event.my-event-priority {
-    border-color: #f89406;
-}
-
-/* END Personalizaciones Próximos Eventos */
-
-/* Responsive rules */
-
-/* Para tablets y desktops pequeños */
-@media (min-width: 768px) {
-}
-
-/* Para pantallas un poco más grandes que tablets */
-@media (min-width: 800px) {
-}
-
-/* Para desktops grandes */
-@media (min-width: 1200px) {
-}
-
-/* Estilos para dispositivos con un ancho máximo de 993px y una altura mínima de 640px */
-@media (max-width: 993px) {
-    @media (min-height: 640px) {
-    }
-}
-
-/* Para dispositivos móviles (tablets y teléfonos en posición horizontal) */
-@media (max-width: 767px) {
-}
-
-/* Para pantallas pequeñas */
-@media (max-width: 639px) {
-}
-
-/* Para dispositivos aún más pequeños */
-@media (max-width: 576px) {
-}
-
-/* Para teléfonos muy pequeños */
-@media (max-width: 500px) {
-}
-
-/* Para los teléfonos más pequeños */
-@media (max-width: 479px) {
-}
-
+/* =============================================================================
+   7. LOGIN PAGE
+   ============================================================================= */
 
 /* Estilos base para la página de login */
 .login-page {
@@ -446,19 +583,22 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
 
-    /* Contenedor principal */
-    .login-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+.login-page .login-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
 
-        /* Grid layout */
-        .row {
-            margin: 0;
-            min-height: 100vh;
-        }
-    }
+.login-page .login-container .row {
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Logo de login */
+.login-logo img.mb-3.img-fluid {
+    width: 50%;
 }
 
 /* Estilos del formulario de login */
@@ -467,265 +607,255 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     flex-direction: column;
     max-width: var(--max-width-form);
     animation: fadeIn 0.8s ease-out;
-
-    /* Mensaje de bienvenida */
-    .login-welcome-wrapper {
-        text-align: center;
-        margin-bottom: 2rem;
-
-        h2 {
-            font-size: 1.25rem;
-            color: var(--color-text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            color: var(--color-text-secondary);
-            font-size: 0.95rem;
-        }
-    }
-
 }
 
-.login-wrapper{
+.loginform .login-welcome-wrapper {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.loginform .login-welcome-wrapper h2 {
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.loginform .login-welcome-wrapper p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.login-wrapper {
     margin: 10%;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+/* Layout de columnas en login */
+@media (min-width: 768px) {
+    .fixed-carousel-col {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 66.6667%;
+        height: 100vh;
+        overflow: hidden; /* Evita scroll interno */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Footer */
-.footer {
-    background-color: var(--color-footer-bg);
-    padding: 1rem 0;
-    text-align: center;
-
-    .my-credit {
-        font-size: 0.875rem;
-        color: var(--color-text-secondary);
+    .login-col {
+        margin-left: 66.6667%;
+        min-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }
 
-/* Media queries para responsividad */
-@media (max-width: 991.98px) {
-    .loginform {
-        margin: 5%;
-        padding: 1.5rem;
-    }
+/* Estilos generales del carrusel */
+#loginCarousel {
+    height: 100%;
 }
 
-@media (max-width: 768px) {
-    .loginform {
-        .login-welcome-wrapper h2 {
-            font-size: 1.25rem;
-        }
-    }
+/* Estilos para los enlaces de los slides */
+.carousel-item .slide-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
 }
 
-@media (max-width: 480px) {
-    .loginform {
-        margin: 1rem;
-        padding: 1rem;
-
-        .login-logo img {
-            max-width: 150px;
-        }
-    }
+.carousel-item .slide-link:hover,
+.carousel-item .slide-link:focus {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
 }
 
+/* Controles del carrusel mejorados */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0.7;
+    width: 10%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Animaciones para los slides */
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
 
 .carousel-item img {
-    object-fit: cover; /* Ya está en tu código */
+    object-fit: cover;
     width: 100%;
     height: 100vh;
-    max-height: 1080px; /* Para evitar estiramiento excesivo en pantallas muy altas */
+    max-height: 1080px; /* Para evitar estiramiento excesivo */
+    transition: transform 6s ease;
 }
 
-.primary-navigation .nav.more-nav {
-    display: flex;
-    /* Asegúrate de que el contenedor use flexbox */
+/* Animaciones del formulario de login */
+.loginform {
+    animation: slideInUp 0.7s ease forwards;
+    transform-origin: center bottom;
 }
 
-.primary-navigation .nav.more-nav .nav-item[data-key="coursecat"] {
-    order: 1;
-    /* Cursos */
+.login-logo img {
+    animation: fadeInScale 0.8s ease 0.2s both;
 }
 
-.primary-navigation .nav.more-nav .nav-item[data-key="myhome"] {
-    order: 2;
-    /* Área personal */
+.login-welcome-wrapper h2 {
+    animation: fadeInLeft 0.5s ease 0.3s both;
 }
 
-.primary-navigation .nav.more-nav .nav-item[data-key="mycourses"] {
-    order: 3;
-    /* Mis cursos */
+.login-welcome-wrapper p {
+    animation: fadeInLeft 0.5s ease 0.5s both;
 }
 
-.primary-navigation .nav.more-nav .nav-item[data-key="home"] {
-    order: 4;
-    /* Página principal */
+.login-form-username,
+.login-form-password {
+    animation: fadeInRight 0.5s ease both;
+    opacity: 0;
 }
 
-.primary-navigation .nav.more-nav .nav-item[data-key="siteadminnode"] {
-    order: 5;
-    /* Administración del sitio, opcional si quieres cambiar su posición */
+.login-form-username {
+    animation-delay: 0.5s;
 }
 
-.primary-navigation .nav.more-nav .dropdownmoremenu {
-    order: 6;
+.login-form-password {
+    animation-delay: 0.7s;
 }
 
-.navbar [data-key="recentcourses"] {
-    display: none;
+.login-form-forgotpassword {
+    animation: fadeIn 0.5s ease 0.9s both;
 }
 
-span.badge.badge-info {
-    color: white;
-}
-span.badge.rounded-pill.bg-secondary.text-dark {
-    color: white !important;
-}
-span.badge.bg-secondary.text-dark {
-    color: white !important;
-}
-.about-text-content h4.data {
-    color: #ffffff;
-}
-.about-text-content a.link-1 {
-    color: #ffffff;
-}
-.login-logo img.mb-3.img-fluid {
-    width: 50%;
-}
-/*20250303*/
-/*NAVBAR DE GOBIERNO*/
-/* 
- * Estilos para el Navbar de Gobierno con Bootstrap
- * Para el Fondo Nacional de Garantías - Versión mejorada y ampliada
- */
-
-/* Importación de fuentes */
-/* @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap'); */
-
-/* Contenedor principal del navbar */
-.gov-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1031; /* Más alto que el navbar de Moodle */
-    font-family: 'Work Sans', sans-serif;
-    width: 100%;
-    height: 90px; /* Aumentado de 76px a 90px (38px + 52px) */
+#loginbtn {
+    animation: pulseButton 0.5s ease 1s both;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Barra superior azul */
-.gov-navbar-top {
-    background-color: $fng-blue-dark; /* Actualizado al azul FNG #045091 */
-    height: 38px; /* Aumentado de 32px a 38px */
-    display: flex;
-    align-items: center;
+#loginbtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Logo de GOV.CO */
-.gov-logo {
-    height: 30px; /* Aumentado de 24px a 30px */
-    margin-top: 4px;
+.login-identityproviders, 
+.cookies-section {
+    animation: fadeIn 0.8s ease 1.2s both;
 }
 
-.gov-logo img {
-    height: 30px; /* Aumentado de 24px a 30px */
-    width: auto;
+.alert-danger {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-/* Barra de menú azul oscuro */
-.gov-navbar-menu {
-    background: darken($fng-blue-dark, 10%); /* Azul oscuro basado en el color principal */
-    height: 52px; /* Aumentado de 44px a 52px */
-    display: flex;
-    align-items: center;
+.form-control:focus {
+    animation: pulseField 1s ease infinite;
 }
 
-/* Lista de menú */
-.gov-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    justify-content: flex-end;
+/* Definición de animaciones */
+@keyframes slideInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.gov-menu-item {
-    margin-right: 25px; /* Aumentado de 20px a 25px */
-    position: relative;
+@keyframes fadeInLeft {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.gov-menu-item:last-child {
-    margin-right: 0;
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.gov-link {
-    color: #FFFFFF;
-    font-size: 16px; /* Aumentado de 14px a 16px */
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding-top: 12px; /* Aumentado de 8px a 12px */
-    padding-bottom: 12px; /* Aumentado de 8px a 12px */
-    padding-left: 15px; /* Aumentado de 10px a 15px */
-    padding-right: 15px; /* Aumentado de 10px a 15px */
-    transition: background-color 0.3s ease;
-    border-radius: 4px; /* Añadido para mejorar la accesibilidad visual */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
-.gov-link:hover, 
-.gov-link:focus, 
-.gov-link:active {
-    color: #FFFFFF;
-    text-decoration: none;
-    background: $fng-blue-medium; /* Actualizado a azul medio FNG */
-    outline: none; /* Elimina el outline por defecto */
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.5); /* Añade un box-shadow como indicador de foco */
+@keyframes fadeInScale {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-.gov-link i {
-    margin-left: 8px; /* Aumentado de 5px a 8px */
-    font-size: 18px; /* Aumentado de 16px a 18px */
-    color: $fng-yellow; /* Actualizado a amarillo FNG */
+@keyframes pulseButton {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-/* Añadir un indicador visual de foco para accesibilidad */
-.gov-link:focus-visible {
-    outline: 2px solid $fng-yellow; /* Actualizado a amarillo FNG */
-    outline-offset: 2px;
+@keyframes shake {
+    10%, 90% {
+        transform: translateX(-1px);
+    }
+    20%, 80% {
+        transform: translateX(2px);
+    }
+    30%, 50%, 70% {
+        transform: translateX(-3px);
+    }
+    40%, 60% {
+        transform: translateX(3px);
+    }
 }
 
-/* Ajustes para el navbar principal de Moodle */
-.navbar.fixed-top {
-    top: 90px !important; /* Actualizado de 76px a 90px */
-    position: fixed !important;
+@keyframes pulseField {
+    0% {
+        box-shadow: 0 0 0 0 rgba(64, 158, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(64, 158, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(64, 158, 255, 0);
+    }
 }
 
-/* Ajustes para el body */
-body {
-    padding-top: 162px !important; /* Actualizado de 148px a 162px (90px + altura del navbar de Moodle) */
-}
+/* =============================================================================
+   8. MEDIA QUERIES
+   ============================================================================= */
 
-/* Override específico para el problema mencionado */
+/* Ajuste responsive para navbar GOV.CO */
 @media (min-width: 576px) {
     body:not(.focusmode) .navbar:not(.fm-navbar) {
-        top: 90px !important; /* Actualizado de 76px a 90px */
+        top: 90px !important;
         transition: all 0.5s ease;
     }
     
@@ -734,23 +864,9 @@ body {
     }
 }
 
-/* Aumentar especificidad para resolver conflictos */
-html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
-    top: 90px !important; /* Actualizado de 76px a 90px */
-}
-
-/* Aplicar a cualquier contenedor adicional */
-.navbar-wrapper .navbar,
-#page-header + .navbar,
-#wdm-wrapper-navbar,
-.page-header + .navbar {
-    top: 90px !important; /* Actualizado de 76px a 90px */
-}
-
-/* Responsividad */
 @media (max-width: 992px) {
     .gov-link {
-        font-size: 15px; /* Ligeramente reducido para tablets */
+        font-size: 15px;
         padding-left: 12px;
         padding-right: 12px;
     }
@@ -758,7 +874,7 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
 
 @media (max-width: 768px) {
     .gov-navbar {
-        height: 84px; /* Reducido pero aún más grande que el original */
+        height: 84px;
     }
     
     .gov-navbar-top {
@@ -775,9 +891,8 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
         padding-bottom: 10px;
     }
     
-    /* Texto truncado para móviles - ahora con mejor manejo de texto largo */
     .gov-menu-item:last-child .gov-link {
-        max-width: 140px; /* Aumentado de 120px a 140px */
+        max-width: 140px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -787,11 +902,34 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
     .navbar-wrapper .navbar,
     #page-header + .navbar,
     #wdm-wrapper-navbar {
-        top: 84px !important; /* Actualizado para móviles */
+        top: 84px !important;
     }
     
     body {
-        padding-top: 156px !important; /* Actualizado para móviles */
+        padding-top: 156px !important;
+    }
+    
+    .about-text-content {
+        padding: 0 10px;
+    }
+    
+    .loginform .login-welcome-wrapper h2 {
+        font-size: 1.25rem;
+    }
+    
+    /* Ajustes para el carrusel en móviles */
+    #loginCarouselColumn {
+        height: 40vh; /* Altura más pequeña en móviles */
+        position: relative;
+        display: block !important; /* Forzar visualización */
+    }
+    
+    .carousel-item img {
+        height: 40vh;
+    }
+    
+    .login-col {
+        margin-left: 0;
     }
 }
 
@@ -802,7 +940,7 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
     
     .gov-navbar-menu {
         height: auto;
-        padding: 8px 0; /* Aumentado de 5px a 8px */
+        padding: 8px 0;
     }
     
     .gov-menu {
@@ -812,33 +950,89 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
     
     .gov-menu-item {
         margin-right: 0;
-        margin-bottom: 8px; /* Aumentado de 5px a 8px */
+        margin-bottom: 8px;
         width: 100%;
     }
     
     .gov-link {
         width: 100%;
-        justify-content: space-between; /* Mejor alineación en móviles */
-        font-size: 15px; /* Algo más grande para mejor legibilidad en móviles */
+        justify-content: space-between;
+        font-size: 15px;
     }
     
     .gov-menu-item:last-child .gov-link {
-        max-width: none; /* En pantallas muy pequeñas, permitir que el texto ocupe el ancho completo */
+        max-width: none;
     }
     
     .navbar.fixed-top,
     .navbar-wrapper .navbar,
     #page-header + .navbar,
     #wdm-wrapper-navbar {
-        top: 100px !important; /* Ajustado para la altura variable en móviles */
+        top: 100px !important;
     }
     
     body {
-        padding-top: 170px !important; /* Ajustado para la altura variable en móviles */
+        padding-top: 170px !important;
     }
 }
 
-/* Mejoras de accesibilidad adicionales */
+@media (max-width: 480px) {
+    .loginform {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .loginform .login-logo img {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .loginform {
+        margin: 5%;
+        padding: 1.5rem;
+    }
+}
+
+/* Accesibilidad - reducir movimiento para usuarios que lo prefieren */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Fix para navegadores antiguos */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .navbar.fixed-top {
+        top: 90px !important;
+    }
+}
+
+/* Estilos para accesibilidad alta/contraste */
+@media (forced-colors: active) {
+    .gov-link:focus {
+        outline: 3px solid CanvasText;
+    }
+    
+    .gov-link i {
+        forced-color-adjust: none;
+    }
+}
+
+/* =============================================================================
+   9. UTILIDADES
+   ============================================================================= */
+
+/* Mejora de transiciones */
+.form-control, 
+.btn, 
+a {
+    transition: all 0.3s ease;
+}
+
 .gov-link .sr-only {
     position: absolute;
     width: 1px;
@@ -851,25 +1045,7 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
     border: 0;
 }
 
-/* Para usuarios con alto contraste */
-@media (forced-colors: active) {
-    .gov-link:focus {
-        outline: 3px solid CanvasText;
-    }
-    
-    .gov-link i {
-        forced-color-adjust: none;
-    }
-}
-
-/* Fix para navegadores antiguos */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .navbar.fixed-top {
-        top: 90px !important; /* Actualizado de 76px a 90px */
-    }
-}
-
-/* Estilo inline para máxima especificidad */
+/* Especificidad máxima para asegurar sobreescrituras */
 div.navbar.fixed-top {
-    top: 90px !important; /* Actualizado de 76px a 90px */
+    top: 90px !important;
 }
