@@ -74,10 +74,6 @@ public function get_theme_config()
         // Prepara el mensaje de error, si lo hubiera.
         $context->errorformatted = $this->error_text($context->error);
 
-        // Añade los textos para la autorización policial.
-        $context->police_autorization = get_string('police_autorization', 'theme_fng');
-        $context->police_autorization_help = get_string('police_autorization_help', 'theme_fng');
-
         // Logo from 'remui' or from 'fng'? 
         // Si deseas usar el logo del tema "fng" en vez de "remui", cambia la línea:
         $context->logourl = $this->get_theme_logo_url('logo');
