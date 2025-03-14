@@ -13,7 +13,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
  * Login page layout for theme_fng.
  *
@@ -67,39 +66,35 @@ for ($i = 1; $i <= $numslides; $i++) {
     $imageurl = $theme->setting_file_url("fng_slideimage{$i}", "fng_slideimage{$i}");
     
     if (!empty($imageurl)) {
-        // Verificamos si el archivo existe en storage.
-        $files = $fs->get_area_files(
-            $context->id,
-            'theme_fng',
-            "fng_slideimage{$i}",
-            0,
-            'sortorder',
-            false
-        );
+        $validSlides++;
         
-        if (!empty($files)) {
-            $validSlides++;
-            
-            // Extraemos los demás parámetros del slide
+        // Extraer título solo si existe
+        $slidetitle = '';
+        if (isset($theme->settings->{"fng_slidetitle{$i}"}) && !empty($theme->settings->{"fng_slidetitle{$i}"})) {
             $slidetitle = format_string(
-                $theme->settings->{"fng_slidetitle{$i}"} ?? '',
+                $theme->settings->{"fng_slidetitle{$i}"},
                 true,
                 ['escape' => false]
             );
-            $slideurl = $theme->settings->{"fng_slideurl{$i}"} ?? '#';
-            
-            // Se añade la diapositiva al array con sus settings
-            $templatecontext['carouselimages'][] = [
-                'url'       => $imageurl,
-                'link'      => $slideurl,
-                'title'     => $slidetitle,
-                'has_title' => !empty($slidetitle),
-                'has_link'  => ($slideurl !== '#'),
-                'first'     => ($validSlides === 1),
-                'index'     => ($validSlides - 1),
-                'real_index'=> $i // Índice original del slide
-            ];
         }
+        
+        // Extraer URL solo si existe
+        $slideurl = '#';
+        if (isset($theme->settings->{"fng_slideurl{$i}"}) && !empty($theme->settings->{"fng_slideurl{$i}"})) {
+            $slideurl = $theme->settings->{"fng_slideurl{$i}"};
+        }
+        
+        // Se añade la diapositiva al array con sus settings
+        $templatecontext['carouselimages'][] = [
+            'url'       => $imageurl,
+            'link'      => $slideurl,
+            'title'     => $slidetitle,
+            'has_title' => !empty($slidetitle),
+            'has_link'  => !empty($slideurl) && $slideurl !== '#',
+            'first'     => ($validSlides === 1),
+            'index'     => ($validSlides - 1),
+            'real_index'=> $i // Índice original del slide
+        ];
     }
 }
 
@@ -124,6 +119,14 @@ if (!$templatecontext['has_carousel']) {
     $templatecontext['multiple_slides'] = false;
 }
 
+// Depuración opcional para verificar la configuración correcta
+if (debugging()) {
+    debugging('Slides configurados: ' . count($templatecontext['carouselimages']), DEBUG_DEVELOPER);
+    foreach ($templatecontext['carouselimages'] as $index => $slide) {
+        debugging("Slide " . ($index + 1) . ": title=" . ($slide['has_title'] ? 'visible' : 'hidden') . 
+                ", link=" . ($slide['has_link'] ? 'enabled' : 'disabled'), DEBUG_DEVELOPER);
+    }
+}
 
 // =========================================================================
 // Renderizar la plantilla con este contexto
