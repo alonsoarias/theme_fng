@@ -370,8 +370,8 @@ public function get_theme_config()
     {
         global $CFG;
         $allowed_urls = [
-            'https://fng.moodlesoporte.net',
-            'http://fng.moodlesoporte.net',
+            'https://fng2.moodlesoporte.net',
+            'http://fng2.moodlesoporte.net',
             'https://aulavirtual.fng.com',
             'http://aulavirtual.fng.com',
             'https://moodle45.localhost.com',
