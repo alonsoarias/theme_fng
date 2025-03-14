@@ -44,10 +44,11 @@ div#navbarmenutopic {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1031; /* Más alto que el navbar de Moodle */
+    z-index: 1031;
     font-family: 'Work Sans', sans-serif;
     width: 100%;
-    height: 90px;
+    height: auto;
+    transition: height 0.3s ease;
 }
 
 .gov-navbar-top {
@@ -69,11 +70,13 @@ div#navbarmenutopic {
 
 .gov-navbar-menu {
     background: darken($fng-blue-dark, 10%);
-    height: 52px;
+    min-height: 52px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
+/* Estilos del menú de gobierno */
 .gov-menu {
     display: flex;
     list-style: none;
@@ -81,6 +84,7 @@ div#navbarmenutopic {
     padding: 0;
     width: 100%;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .gov-menu-item {
@@ -99,11 +103,8 @@ div#navbarmenutopic {
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 15px;
-    padding-right: 15px;
-    transition: background-color 0.3s ease;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
     border-radius: 4px;
 }
 
@@ -123,9 +124,127 @@ div#navbarmenutopic {
     color: $fng-yellow;
 }
 
-.gov-link:focus-visible {
-    outline: 2px solid $fng-yellow;
-    outline-offset: 2px;
+/* Botón hamburguesa para móviles */
+.gov-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1032;
+}
+
+.gov-menu-toggle .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Media queries para responsive */
+@media (max-width: 991px) {
+    .gov-menu-toggle {
+        display: block;
+    }
+
+    .gov-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: darken($fng-blue-dark, 12%);
+        padding: 10px 0;
+        flex-direction: column;
+    }
+
+    .gov-menu.show {
+        display: flex;
+    }
+
+    .gov-menu-item {
+        margin: 0;
+        width: 100%;
+    }
+
+    .gov-link {
+        padding: 12px 20px;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .gov-link-text {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    body {
+        padding-top: 120px !important;
+    }
+
+    .navbar.fixed-top {
+        top: 90px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .gov-navbar-top {
+        height: 36px;
+    }
+
+    .gov-logo {
+        height: 24px;
+        margin-top: 6px;
+    }
+
+    .gov-logo img {
+        height: 24px;
+    }
+
+    .gov-navbar-menu {
+        min-height: 48px;
+    }
+
+    .gov-link {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    body {
+        padding-top: 110px !important;
+    }
+
+    .navbar.fixed-top {
+        top: 84px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .gov-navbar {
+        height: auto;
+    }
+
+    .gov-navbar-menu {
+        padding: 8px 0;
+    }
+
+    .gov-menu-toggle {
+        right: 10px;
+    }
+
+    .gov-link {
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+
+    body {
+        padding-top: 100px !important;
+    }
+
+    .navbar.fixed-top {
+        top: 80px !important;
+    }
 }
 
 /* Ajustes para el navbar de Moodle */
@@ -149,7 +268,6 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
 .navbar .edw-icon {
     color: $color-primary;
 }
-
 
 /* =============================================================================
    3. FOOTER
@@ -605,7 +723,7 @@ span.badge.bg-secondary.text-dark {
         left: 0;
         width: 66.6667%;
         height: 100vh;
-        overflow: hidden; /* Evita scroll interno */
+        overflow: hidden;
     }
     .login-col {
         margin-left: 66.6667%;
@@ -657,170 +775,59 @@ span.badge.bg-secondary.text-dark {
     object-fit: cover;
     width: 100%;
     height: 100vh;
-    max-height: 1080px; /* Para evitar estiramiento excesivo */
+    max-height: 1080px;
     transition: transform 6s ease;
 }
 
 /* Animaciones del formulario de login */
-.loginform {
-    animation: slideInUp 0.7s ease forwards;
-    transform-origin: center bottom;
-}
-
-.login-logo img {
-    animation: fadeInScale 0.8s ease 0.2s both;
-}
-
-.login-welcome-wrapper h2 {
-    animation: fadeInLeft 0.5s ease 0.3s both;
-}
-
-.login-welcome-wrapper p {
-    animation: fadeInLeft 0.5s ease 0.5s both;
-}
-
-.login-form-username,
-.login-form-password {
-    animation: fadeInRight 0.5s ease both;
-    opacity: 0;
-}
-
-.login-form-username {
-    animation-delay: 0.5s;
-}
-
-.login-form-password {
-    animation-delay: 0.7s;
-}
-
-.login-form-forgotpassword {
-    animation: fadeIn 0.5s ease 0.9s both;
-}
-
-#loginbtn {
-    animation: pulseButton 0.5s ease 1s both;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#loginbtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.login-identityproviders, 
-.cookies-section {
-    animation: fadeIn 0.8s ease 1.2s both;
-}
-
-.alert-danger {
-    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
-}
-
-.form-control:focus {
-    animation: pulseField 1s ease infinite;
-}
-
-/* Definición de animaciones */
 @keyframes slideInUp {
-    0% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes fadeInLeft {
-    0% {
-        transform: translateX(-20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fadeInRight {
-    0% {
-        transform: translateX(20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @keyframes fadeInScale {
-    0% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes pulseButton {
-    0% {
-        transform: scale(0.95);
-        opacity: 0;
-    }
-    70% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+    0% { transform: scale(0.95); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes shake {
-    10%, 90% {
-        transform: translateX(-1px);
-    }
-    20%, 80% {
-        transform: translateX(2px);
-    }
-    30%, 50%, 70% {
-        transform: translateX(-3px);
-    }
-    40%, 60% {
-        transform: translateX(3px);
-    }
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-3px); }
+    40%, 60% { transform: translateX(3px); }
 }
 
 @keyframes pulseField {
-    0% {
-        box-shadow: 0 0 0 0 rgba(64, 158, 255, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 5px rgba(64, 158, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(64, 158, 255, 0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(64, 158, 255, 0.4); }
+    70% { box-shadow: 0 0 0 5px rgba(64, 158, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(64, 158, 255, 0); }
 }
 
 /* =============================================================================
-   8. MEDIA QUERIES
+   8. MEDIA QUERIES GENERALES
    ============================================================================= */
 
-/* Ajuste responsive para navbar GOV.CO */
 @media (min-width: 576px) {
     body:not(.focusmode) .navbar:not(.fm-navbar) {
         top: 90px !important;
@@ -829,118 +836,6 @@ span.badge.bg-secondary.text-dark {
     
     html body.focusmode .navbar.fm-navbar {
         top: 0 !important;
-    }
-}
-
-@media (max-width: 992px) {
-    .gov-link {
-        font-size: 15px;
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-}
-
-@media (max-width: 768px) {
-    .gov-navbar {
-        height: 84px;
-    }
-    
-    .gov-navbar-top {
-        height: 36px;
-    }
-    
-    .gov-navbar-menu {
-        height: 48px;
-    }
-    
-    .gov-link {
-        font-size: 14px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    
-    .gov-menu-item:last-child .gov-link {
-        max-width: 140px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .navbar.fixed-top, 
-    .navbar-wrapper .navbar,
-    #page-header + .navbar,
-    #wdm-wrapper-navbar {
-        top: 84px !important;
-    }
-    
-    body {
-        padding-top: 156px !important;
-    }
-    
-    .about-text-content {
-        padding: 0 10px;
-    }
-    
-    .loginform .login-welcome-wrapper h2 {
-        font-size: 1.25rem;
-    }
-    
-    /* Ajustes para el carrusel en móviles */
-    #loginCarouselColumn {
-        height: 40vh; /* Altura más pequeña en móviles */
-        position: relative;
-        display: block !important; /* Forzar visualización */
-    }
-    
-    .carousel-item img {
-        height: 40vh;
-    }
-    
-    .login-col {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 576px) {
-    .gov-navbar {
-        height: auto;
-    }
-    
-    .gov-navbar-menu {
-        height: auto;
-        padding: 8px 0;
-    }
-    
-    .gov-menu {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .gov-menu-item {
-        margin-right: 0;
-        margin-bottom: 8px;
-        width: 100%;
-    }
-    
-    .gov-link {
-        width: 100%;
-        justify-content: space-between;
-        font-size: 15px;
-    }
-    
-    .gov-menu-item:last-child .gov-link {
-        max-width: none;
-    }
-    
-    .navbar.fixed-top,
-    .navbar-wrapper .navbar,
-    #page-header + .navbar,
-    #wdm-wrapper-navbar {
-        top: 100px !important;
-    }
-    
-    body {
-        padding-top: 170px !important;
     }
 }
 
@@ -962,7 +857,7 @@ span.badge.bg-secondary.text-dark {
     }
 }
 
-/* Accesibilidad - reducir movimiento para usuarios que lo prefieren */
+/* Accesibilidad - reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -979,7 +874,7 @@ span.badge.bg-secondary.text-dark {
     }
 }
 
-/* Estilos para accesibilidad alta/contraste */
+/* Estilos para alto contraste */
 @media (forced-colors: active) {
     .gov-link:focus {
         outline: 3px solid CanvasText;
@@ -1013,7 +908,7 @@ a {
     border: 0;
 }
 
-/* Especificidad máxima para asegurar sobreescrituras */
+/* Especificidad máxima para sobreescrituras */
 div.navbar.fixed-top {
     top: 90px !important;
 }
