@@ -33,17 +33,18 @@ div#navbarmenutopic {
     height: 80px !important;
 }
 
-/* Navbar de Gobierno (GOV.CO) - ACTUALIZADO */
+/* Navbar de Gobierno (GOV.CO) - OPTIMIZADO */
 .gov-navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1031;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     width: 100%;
     height: auto;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .gov-navbar-top {
@@ -61,6 +62,7 @@ div#navbarmenutopic {
 .gov-logo img {
     height: 30px;
     width: auto;
+    transition: height 0.2s ease;
 }
 
 .gov-navbar-menu {
@@ -69,9 +71,10 @@ div#navbarmenutopic {
     display: flex;
     align-items: center;
     position: relative;
+    transition: min-height 0.3s ease;
 }
 
-/* Estilos del menú de gobierno - MEJORADOS */
+/* Estilos del menú de gobierno - PERFECCIONADOS */
 .gov-menu {
     display: flex;
     list-style: none;
@@ -80,6 +83,7 @@ div#navbarmenutopic {
     width: 100%;
     justify-content: flex-end;
     flex-wrap: wrap;
+    transition: transform 0.3s ease-in-out;
 }
 
 .gov-menu-item {
@@ -101,6 +105,7 @@ div#navbarmenutopic {
     padding: 14px 15px;
     transition: all 0.3s ease;
     border-radius: 4px;
+    white-space: nowrap;
 }
 
 .gov-link:hover, 
@@ -117,29 +122,39 @@ div#navbarmenutopic {
     margin-left: 8px;
     font-size: 18px;
     color: #FEEB17;
+    transition: transform 0.2s ease;
 }
 
-/* Botón hamburguesa para móviles - MEJORADO */
+.gov-link:hover i {
+    transform: translateX(2px);
+}
+
+/* Botón hamburguesa optimizado */
 .gov-menu-toggle {
     display: none;
     background: none;
     border: none;
     color: white;
-    padding: 10px;
+    padding: 10px 15px;
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1032;
     cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.gov-menu-toggle:hover, 
+.gov-menu-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .gov-menu-toggle .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.gov-menu.show {
-    display: flex !important;
+    width: 24px;
+    height: 24px;
 }
 
 /* Ajustes para el navbar de Moodle - CORREGIDOS */
@@ -162,24 +177,226 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
 
 /* Moodle navbar específicos */
 .navbar .edw-icon {
-    color: $color-primary;
+    color: #045091;
 }
 
 /* =============================================================================
-   3. FOOTER
+   3. ESTILOS PARA COURSEINDEX (ADAPTADO DE COMPECER)
+   ============================================================================= */
+
+/* Asegurar que las secciones de curso aparezcan colapsadas por defecto */
+.courseindex-item-content {
+    display: none !important;
+}
+
+.courseindex-item-content.show {
+    display: block !important;
+}
+
+/* Estilos base para courseindex */
+.courseindex-section {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    margin: 0 auto 0.75rem;
+    transition: all 0.25s ease-in-out;
+    width: 95%;
+    overflow: hidden;
+}
+
+.courseindex-section:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
+.courseindex-section.current {
+    border-color: rgba(4, 80, 145, 0.3);
+    box-shadow: 0 2px 12px rgba(4, 80, 145, 0.08);
+}
+
+/* Estilo para el encabezado de sección */
+.courseindex-section-title {
+    background-color: #045091 !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.courseindex-section-title.dimmed {
+    opacity: 0.85;
+    background-color: rgba(4, 80, 145, 0.95) !important;
+}
+
+/* Estilo para enlaces dentro del título de sección */
+.courseindex-section-title .courseindex-link {
+    color: white !important;
+    padding: 14px 18px;
+    flex-grow: 1;
+    font-size: 0.95rem;
+    font-weight: 600 !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-right: auto;
+    letter-spacing: 0.2px;
+}
+
+.courseindex-section-title .courseindex-link:hover,
+.courseindex-section-title .courseindex-link:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Estilo para el icono de colapso/expansión */
+.courseindex-chevron {
+    min-width: 46px;
+    padding: 0 10px;
+    margin-right: 6px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.95) !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.courseindex-chevron:hover,
+.courseindex-chevron:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white !important;
+}
+
+.courseindex-chevron .edw-icon {
+    color: white !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.courseindex-chevron.collapsed .edw-icon-Down-Arrow {
+    transform: rotate(0deg);
+}
+
+.courseindex-chevron:not(.collapsed) .edw-icon-Down-Arrow {
+    transform: rotate(180deg);
+}
+
+/* Estilo de los elementos colapsables */
+.courseindex-item-content {
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.courseindex-sectioncontent {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    width: 100%;
+}
+
+/* Estilo para elementos del curso (activities) */
+.courseindex-item {
+    width: 95%;
+    margin: 2px auto;
+}
+
+.courseindex-item a.courseindex-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    color: #5e5e5e;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    border-radius: 0 4px 4px 0;
+    width: 100%;
+}
+
+.courseindex-item a.courseindex-link:hover {
+    background-color: rgba(226, 17, 68, 0.05);
+    color: #e21144;
+    border-left-color: #ffb000;
+    transform: translateX(2px);
+}
+
+.courseindex-item.active a.courseindex-link {
+    background-color: rgba(226, 17, 68, 0.08);
+    color: #e21144 !important;
+    border-left-color: #ffb000;
+    font-weight: 500;
+}
+
+/* Fix para los íconos de configuración y mover */
+.edw-section-content-icon-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.edw-title-icon-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .courseindex-section {
+        width: 98%;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+    }
+
+    .courseindex-section-title .courseindex-link {
+        padding: 12px 14px;
+        font-size: 0.875rem;
+    }
+
+    .courseindex-chevron {
+        min-width: 40px;
+        padding: 0 8px;
+        margin-right: 4px;
+    }
+
+    .courseindex-item {
+        width: 98%;
+    }
+
+    .courseindex-item a.courseindex-link {
+        padding: 10px 14px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .courseindex-section,
+    .courseindex-section-title .courseindex-link,
+    .courseindex-chevron,
+    .courseindex-item a.courseindex-link,
+    .courseindex-item a.courseindex-link i {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* =============================================================================
+   4. FOOTER
    ============================================================================= */
 
 #page-footer .copyright {
-    background-color: $my-gris;
-    color: $color-primary;
+    background-color: #e8e8e8;
+    color: #045091;
     text-align: center;
     min-height: inherit;
     margin-bottom: 0;
 }
 
 #top-footer {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: #045091;
+    color: #FFFFFF;
     margin: 0 -15px;
 }
 
@@ -194,20 +411,20 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
 }
 
 .my-credit-footer-wrapper {
-    background-color: $color-lightgray;
-    color: $color-primary;
+    background-color: #e8e8e8;
+    color: #045091;
     font-size: 15px;
 }
 
 a.my-credit-link,
 a.my-credit-link:hover {
-    color: $color-primary;
+    color: #045091;
 }
 
 #page-footer .footer-container hr,
 .progress-bar {
-    background-color: $color-primary;
-    border-top: 1px solid $color-white;
+    background-color: #045091;
+    border-top: 1px solid #FFFFFF;
 }
 
 .about-text-content {
@@ -224,7 +441,7 @@ a.my-credit-link:hover {
 }
 
 /* =============================================================================
-   4. BOTONES
+   5. BOTONES
    ============================================================================= */
 
 /* Estilos de botones generales */
@@ -236,30 +453,30 @@ a.my-credit-link:hover {
 }
 
 .btn-link {
-    color: $color-secondary;
-    border-color: $color-primary;
+    color: #F6B215;
+    border-color: #045091;
 }
 
 .btn-link:hover {
-    color: $color-primary;
-    border-color: $color-secondary;
+    color: #045091;
+    border-color: #F6B215;
 }
 
 .btn-outline-primary {
-    color: $color-secondary;
-    border-color: $color-secondary;
+    color: #F6B215;
+    border-color: #F6B215;
 }
 
 .btn-outline-primary:hover {
-    color: $color-white;
-    background-color: darken($color-secondary, 10%);
-    border-color: darken($color-secondary, 10%);
+    color: #FFFFFF;
+    background-color: #E20E17;
+    border-color: #E20E17;
 }
 
 /* Primary button styling */
 .btn-primary {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
+    background-color: #F6B215;
+    border-color: #F6B215;
     color: #ffffff;
 }
 
@@ -269,8 +486,8 @@ a.my-credit-link:hover {
 }
 
 .btn-primary:hover {
-    background-color: $color-primary;
-    border-color: $color-primary;
+    background-color: #045091;
+    border-color: #045091;
     color: #ffffff;
 }
 
@@ -278,22 +495,22 @@ a.my-credit-link:hover {
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .show > .btn-primary.dropdown-toggle {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
+    background-color: #F6B215;
+    border-color: #F6B215;
     color: #ffffff;
 }
 
 .btn-primary:not(:disabled):not(.disabled):focus,
 .btn-primary:not(:disabled):not(.disabled).focus {
-    background-color: $color-primary;
-    border-color: $color-primary;
+    background-color: #045091;
+    border-color: #045091;
     color: #ffffff;
 }
 
 /* Secondary button styling */
 .btn-secondary {
-    background-color: $color-primary;
-    border-color: $color-primary;
+    background-color: #045091;
+    border-color: #045091;
     color: #ffffff;
 }
 
@@ -303,8 +520,8 @@ a.my-credit-link:hover {
 }
 
 .btn-secondary:hover {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
+    background-color: #F6B215;
+    border-color: #F6B215;
     color: #ffffff;
 }
 
@@ -312,27 +529,27 @@ a.my-credit-link:hover {
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active:focus,
 .show > .btn-secondary.dropdown-toggle {
-    background-color: $color-primary;
-    border-color: $color-primary;
+    background-color: #045091;
+    border-color: #045091;
     color: #ffffff;
 }
 
 .btn-secondary:not(:disabled):not(.disabled):focus,
 .btn-secondary:not(:disabled):not(.disabled).focus {
-    background-color: $color-secondary;
-    border-color: $color-secondary;
+    background-color: #F6B215;
+    border-color: #F6B215;
     color: #ffffff;
 }
 
 /* Botones Específicos */
 button.btn.btn-primary.icon-no-margin.p-0 {
-    background-color: $color-secondary;
+    background-color: #F6B215;
     border-color: white;
     color: white;
 }
 
 button.btn.btn-primary.icon-no-margin.p-0:hover {
-    background-color: $color-secondary;
+    background-color: #F6B215;
     border-color: white;
     color: white !important;
 }
@@ -341,7 +558,7 @@ button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active,
 button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled).active,
 button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active:focus,
 .show > button.btn.btn-primary.icon-no-margin.p-0.dropdown-toggle {
-    background-color: darken($color-secondary, 10%);
+    background-color: darken(#F6B215, 10%);
     border-color: white;
     color: white;
 }
@@ -380,37 +597,37 @@ button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active .
 }
 
 /* =============================================================================
-   5. BADGES Y ETIQUETAS
+   6. BADGES Y ETIQUETAS
    ============================================================================= */
 
 #page-header.hasbackground.design-1 .header-main-section .category .badge {
     color: white;
-    background-color: $green;
+    background-color: #7AAA18;
 }
 
 .badge-info,
 .badge-info:hover,
 .badge-success,
 .badge-succes:hover {
-    color: $color-primary;
+    color: #045091;
     transition: background-color 0.3s;
 }
 
 .badge-info {
-    background-color: $purple;
+    background-color: #2a3562;
 }
 
 .badge-info:hover {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: #045091;
+    color: #FFFFFF;
 }
 
 .badge-success {
-    background-color: $green;
+    background-color: #7AAA18;
 }
 
 .badge-succes:hover {
-    background-color: darken($green, 10%);
+    background-color: #689014;
 }
 
 span.badge.badge-info {
@@ -423,17 +640,8 @@ span.badge.bg-secondary.text-dark {
 }
 
 /* =============================================================================
-   6. BLOQUES Y NAVEGACIÓN
+   7. BLOQUES Y NAVEGACIÓN
    ============================================================================= */
-
-/* Estilo para el courseindex-section-title */
-#theme_remui-drawers-courseindex .drawercontent #courseindex #courseindex-content .courseindex .courseindex-section .courseindex-section-title.courseindex-item.d-flex.align-items-center.dropready {
-    padding: 10px 24px;
-    color: #ffffff;
-    background-color: $color-primary;
-    border-radius: 0;
-    justify-content: space-between;
-}
 
 /* Navigation Pills */
 .nav-pills-custom .nav-link {
@@ -445,7 +653,7 @@ span.badge.bg-secondary.text-dark {
         content: '';
         display: block;
         border-top: 8px solid transparent;
-        border-left: 10px solid $color-primary;
+        border-left: 10px solid #045091;
         border-bottom: 8px solid transparent;
         position: absolute;
         top: 50%;
@@ -467,21 +675,21 @@ span.badge.bg-secondary.text-dark {
 }
 
 .form-autocomplete-suggestions li:hover {
-    background-color: $color-primary;
-    color: $color-white;
-    border-left: 4px solid $color-primary;
+    background-color: #045091;
+    color: #FFFFFF;
+    border-left: 4px solid #045091;
 }
 
 .form-autocomplete-suggestions li:focus {
-    background-color: $color-lightgray-dimmed;
-    color: $color-primary;
-    border-left: 4px solid $color-secondary-dark;
+    background-color: #ececec;
+    color: #045091;
+    border-left: 4px solid #64bcf7;
 }
 
 .form-autocomplete-suggestions li[aria-selected="true"] {
-    background-color: $color-primary;
-    color: $color-white;
-    border-left: 4px solid $color-secondary;
+    background-color: #045091;
+    color: #FFFFFF;
+    border-left: 4px solid #F6B215;
 }
 
 /* Personalizaciones Próximos Eventos */
@@ -491,11 +699,11 @@ span.badge.bg-secondary.text-dark {
 }
 
 .block_calendar_upcoming .event.my-event-urgent {
-    border-color: #f51f25;
+    border-color: #E20E17;
 }
 
 .block_calendar_upcoming .event.my-event-priority {
-    border-color: #f89406;
+    border-color: #F6B215;
 }
 
 /* Collapsible Links */
@@ -524,38 +732,38 @@ span.badge.bg-secondary.text-dark {
 .page-link,
 .page-link:hover,
 .page-item.active .page-link {
-    color: $color-primary;
+    color: #045091;
     text-decoration: none;
 }
 
 .page-link:hover {
     z-index: 2;
-    color: darken($color-primary, 10%);
+    color: #033968;
     background-color: #e9ecef;
     border-color: #d5ddea;
 }
 
 .page-item.active .page-link {
-    color: $color-white;
-    background-color: $color-primary;
-    border-color: $color-primary;
+    color: #FFFFFF;
+    background-color: #045091;
+    border-color: #045091;
 }
 
 /* Texto y Enlaces */
 .text-info,
 .users-list-name,
 #page-header #page-navbar nav ol.breadcrumb .breadcrumb-item a {
-    color: $color-primary !important;
+    color: #045091 !important;
 }
 
 /* Calendarios */
 .maincalendar .calendarmonth td.today .day-number-circle {
-    color: $color-white;
-    background-color: $color-primary;
+    color: #FFFFFF;
+    background-color: #045091;
 }
 
 /* =============================================================================
-   7. LOGIN PAGE
+   8. LOGIN PAGE
    ============================================================================= */
 
 /* Estilos base para la página de login */
@@ -724,7 +932,7 @@ span.badge.bg-secondary.text-dark {
 }
 
 /* =============================================================================
-   8. MEDIA QUERIES GENERALES - ACTUALIZADAS
+   9. MEDIA QUERIES GENERALES - ACTUALIZADAS
    ============================================================================= */
 
 /* Para sitios distintos a login */
@@ -750,7 +958,6 @@ body.pagelayout-login {
     }
 
     .gov-menu {
-        display: none;
         position: absolute;
         top: 100%;
         left: 0;
@@ -760,6 +967,17 @@ body.pagelayout-login {
         flex-direction: column;
         z-index: 1032;
         box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+        transform: scaleY(0);
+        transform-origin: top;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .gov-menu.show {
+        transform: scaleY(1);
+        max-height: 300px; /* Altura máxima antes de scroll */
+        overflow-y: auto;
+        transition: transform 0.3s ease, max-height 0.3s ease;
     }
 
     .gov-menu-item {
@@ -770,6 +988,7 @@ body.pagelayout-login {
     .gov-link {
         padding: 12px 20px;
         justify-content: space-between;
+        border-radius: 0;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
@@ -900,7 +1119,7 @@ body.pagelayout-login {
 }
 
 /* =============================================================================
-   9. UTILIDADES
+   10. UTILIDADES
    ============================================================================= */
 
 /* Mejora de transiciones */
@@ -1002,8 +1221,7 @@ section#region-main .maincalendar td.today span.day-number-circle, aside:not(#bl
     align-items: center;
 }
 
-/* -- Contenido del cajón --
-   Aquí quitamos o comentamos el overflow para evitar doble scroll */
+/* -- Contenido del cajón -- */
 .drawercontent {
     position: relative;
     display: flex;
