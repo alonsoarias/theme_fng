@@ -33,7 +33,7 @@ div#navbarmenutopic {
     height: 80px !important;
 }
 
-/* Navbar de Gobierno (GOV.CO) - OPTIMIZADO */
+/* Navbar de Gobierno (GOV.CO) - ANIMACIONES MEJORADAS */
 .gov-navbar {
     position: fixed;
     top: 0;
@@ -43,38 +43,56 @@ div#navbarmenutopic {
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     width: 100%;
     height: auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+    animation: navbar-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes navbar-fade-in {
+    0% { opacity: 0; transform: translateY(-8px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .gov-navbar-top {
     background-color: #045091;
+    background-image: linear-gradient(to right, #045091, #096FB7);
     height: 38px;
     display: flex;
     align-items: center;
+    transition: height 0.3s ease-in-out, background-color 0.3s ease;
 }
 
 .gov-logo {
-    height: 30px;
+    height: 32px;
     margin: 4px 0;
+    transition: all 0.3s ease;
+    animation: logo-pulse 1s ease-out;
+}
+
+@keyframes logo-pulse {
+    0% { transform: scale(0.92); opacity: 0; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .gov-logo img {
-    height: 30px;
+    height: 32px;
     width: auto;
     transition: height 0.2s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 .gov-navbar-menu {
-    background: #033968;
+    background: linear-gradient(to bottom, #033968, #022f5a);
     min-height: 52px;
     display: flex;
     align-items: center;
     position: relative;
-    transition: min-height 0.3s ease;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Estilos del menú de gobierno - PERFECCIONADOS */
+/* Estilos del menú de gobierno con animaciones */
 .gov-menu {
     display: flex;
     list-style: none;
@@ -83,12 +101,24 @@ div#navbarmenutopic {
     width: 100%;
     justify-content: flex-end;
     flex-wrap: wrap;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .gov-menu-item {
     margin-right: 25px;
     position: relative;
+    opacity: 0;
+    animation: menu-item-fade-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.gov-menu-item:nth-child(1) { animation-delay: 0.1s; }
+.gov-menu-item:nth-child(2) { animation-delay: 0.2s; }
+.gov-menu-item:nth-child(3) { animation-delay: 0.3s; }
+.gov-menu-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes menu-item-fade-in {
+    0% { opacity: 0; transform: translateY(-8px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .gov-menu-item:last-child {
@@ -106,6 +136,32 @@ div#navbarmenutopic {
     transition: all 0.3s ease;
     border-radius: 4px;
     white-space: nowrap;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de brillo en hover */
+.gov-link:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: left 0.7s ease;
+    pointer-events: none;
+}
+
+.gov-link:hover:before {
+    left: 100%;
 }
 
 .gov-link:hover, 
@@ -113,23 +169,43 @@ div#navbarmenutopic {
 .gov-link:active {
     color: #FFFFFF;
     text-decoration: none;
-    background: #096FB7;
+    background: rgba(9, 111, 183, 0.8);
     outline: none;
     box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+    transform: translateY(-2px);
+}
+
+.gov-link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FEEB17;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-out;
+}
+
+.gov-link:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .gov-link i {
-    margin-left: 8px;
+    margin-left: 10px;
     font-size: 18px;
     color: #FEEB17;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
 }
 
 .gov-link:hover i {
-    transform: translateX(2px);
+    transform: translateX(6px);
 }
 
-/* Botón hamburguesa optimizado */
+/* Botón hamburguesa animado */
 .gov-menu-toggle {
     display: none;
     background: none;
@@ -143,18 +219,28 @@ div#navbarmenutopic {
     z-index: 1032;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.3s ease;
 }
 
 .gov-menu-toggle:hover, 
 .gov-menu-toggle:focus {
     background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.gov-menu-toggle:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .gov-menu-toggle .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     width: 24px;
     height: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gov-menu-toggle[aria-expanded="true"] .navbar-toggler-icon {
+    transform: rotate(90deg);
 }
 
 /* Ajustes para el navbar de Moodle - CORREGIDOS */
@@ -180,206 +266,11 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
     color: #045091;
 }
 
-/* =============================================================================
-   3. ESTILOS PARA COURSEINDEX (ADAPTADO DE COMPECER)
-   ============================================================================= */
-
-/* Asegurar que las secciones de curso aparezcan colapsadas por defecto */
-.courseindex-item-content {
-    display: none !important;
-}
-
-.courseindex-item-content.show {
-    display: block !important;
-}
-
-/* Estilos base para courseindex */
-.courseindex-section {
-    position: relative;
-    background-color: #ffffff;
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
-    margin: 0 auto 0.75rem;
-    transition: all 0.25s ease-in-out;
-    width: 95%;
-    overflow: hidden;
-}
-
-.courseindex-section:hover {
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-    transform: translateY(-1px);
-}
-
-.courseindex-section.current {
-    border-color: rgba(4, 80, 145, 0.3);
-    box-shadow: 0 2px 12px rgba(4, 80, 145, 0.08);
-}
-
-/* Estilo para el encabezado de sección */
-.courseindex-section-title {
-    background-color: #045091 !important;
-    padding: 0 !important;
-    display: flex;
-    align-items: stretch;
-    position: relative;
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.courseindex-section-title.dimmed {
-    opacity: 0.85;
-    background-color: rgba(4, 80, 145, 0.95) !important;
-}
-
-/* Estilo para enlaces dentro del título de sección */
-.courseindex-section-title .courseindex-link {
-    color: white !important;
-    padding: 14px 18px;
-    flex-grow: 1;
-    font-size: 0.95rem;
-    font-weight: 600 !important;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    margin-right: auto;
-    letter-spacing: 0.2px;
-}
-
-.courseindex-section-title .courseindex-link:hover,
-.courseindex-section-title .courseindex-link:focus {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: white !important;
-    text-decoration: none;
-}
-
-/* Estilo para el icono de colapso/expansión */
-.courseindex-chevron {
-    min-width: 46px;
-    padding: 0 10px;
-    margin-right: 6px;
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.95) !important;
-    cursor: pointer;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.courseindex-chevron:hover,
-.courseindex-chevron:focus {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: white !important;
-}
-
-.courseindex-chevron .edw-icon {
-    color: white !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.courseindex-chevron.collapsed .edw-icon-Down-Arrow {
-    transform: rotate(0deg);
-}
-
-.courseindex-chevron:not(.collapsed) .edw-icon-Down-Arrow {
-    transform: rotate(180deg);
-}
-
-/* Estilo de los elementos colapsables */
-.courseindex-item-content {
-    background-color: #ffffff;
-    width: 100%;
-}
-
-.courseindex-sectioncontent {
-    list-style: none;
-    margin: 0;
-    padding: 4px 0;
-    width: 100%;
-}
-
-/* Estilo para elementos del curso (activities) */
-.courseindex-item {
-    width: 95%;
-    margin: 2px auto;
-}
-
-.courseindex-item a.courseindex-link {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    color: #5e5e5e;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
-    border-radius: 0 4px 4px 0;
-    width: 100%;
-}
-
-.courseindex-item a.courseindex-link:hover {
-    background-color: rgba(226, 17, 68, 0.05);
-    color: #e21144;
-    border-left-color: #ffb000;
-    transform: translateX(2px);
-}
-
-.courseindex-item.active a.courseindex-link {
-    background-color: rgba(226, 17, 68, 0.08);
-    color: #e21144 !important;
-    border-left-color: #ffb000;
-    font-weight: 500;
-}
-
-/* Fix para los íconos de configuración y mover */
-.edw-section-content-icon-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.edw-title-icon-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .courseindex-section {
-        width: 98%;
-        margin-bottom: 0.5rem;
-        border-radius: 4px;
-    }
-
-    .courseindex-section-title .courseindex-link {
-        padding: 12px 14px;
-        font-size: 0.875rem;
-    }
-
-    .courseindex-chevron {
-        min-width: 40px;
-        padding: 0 8px;
-        margin-right: 4px;
-    }
-
-    .courseindex-item {
-        width: 98%;
-    }
-
-    .courseindex-item a.courseindex-link {
-        padding: 10px 14px;
-        font-size: 0.875rem;
-    }
-}
-
-/* Mejoras de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-    .courseindex-section,
-    .courseindex-section-title .courseindex-link,
-    .courseindex-chevron,
-    .courseindex-item a.courseindex-link,
-    .courseindex-item a.courseindex-link i {
-        transition: none;
-        transform: none;
-    }
+/* Drawer toggler posicionamiento - ACTUALIZADO SEGÚN REQUISITOS */
+.drawer-toggles .drawer-toggler {
+    position: fixed;
+    top: calc(170px + 0.7rem);
+    z-index: 2;
 }
 
 /* =============================================================================
@@ -558,7 +449,7 @@ button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active,
 button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled).active,
 button.btn.btn-primary.icon-no-margin.p-0:not(:disabled):not(.disabled):active:focus,
 .show > button.btn.btn-primary.icon-no-margin.p-0.dropdown-toggle {
-    background-color: darken(#F6B215, 10%);
+    background-color: #e5a00f;
     border-color: white;
     color: white;
 }
@@ -962,7 +853,7 @@ body.pagelayout-login {
         top: 100%;
         left: 0;
         right: 0;
-        background: #033968;
+        background: linear-gradient(to bottom, #033968, #022f5a);
         padding: 0;
         flex-direction: column;
         z-index: 1032;
@@ -971,25 +862,73 @@ body.pagelayout-login {
         transform-origin: top;
         max-height: 0;
         overflow: hidden;
+        transition: transform 0.3s ease, max-height 0.3s ease;
     }
 
     .gov-menu.show {
         transform: scaleY(1);
-        max-height: 300px; /* Altura máxima antes de scroll */
+        max-height: 300px;
         overflow-y: auto;
-        transition: transform 0.3s ease, max-height 0.3s ease;
+        animation: menu-slide-down 0.3s forwards;
+    }
+
+    @keyframes menu-slide-down {
+        0% { 
+            transform: scaleY(0.7); 
+            opacity: 0; 
+        }
+        100% { 
+            transform: scaleY(1); 
+            opacity: 1; 
+        }
     }
 
     .gov-menu-item {
         margin: 0;
         width: 100%;
+        animation: none;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gov-menu.show .gov-menu-item {
+        opacity: 0;
+        animation: mobile-menu-item-fade-in 0.4s ease-out forwards;
+    }
+
+    .gov-menu.show .gov-menu-item:nth-child(1) { animation-delay: 0.05s; }
+    .gov-menu.show .gov-menu-item:nth-child(2) { animation-delay: 0.1s; }
+    .gov-menu.show .gov-menu-item:nth-child(3) { animation-delay: 0.15s; }
+    .gov-menu.show .gov-menu-item:nth-child(4) { animation-delay: 0.2s; }
+
+    @keyframes mobile-menu-item-fade-in {
+        0% { 
+            opacity: 0; 
+            transform: translateX(-10px); 
+        }
+        100% { 
+            opacity: 1; 
+            transform: translateX(0); 
+        }
     }
 
     .gov-link {
-        padding: 12px 20px;
+        padding: 14px 20px;
         justify-content: space-between;
         border-radius: 0;
         border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .gov-link:hover {
+        background-color: rgba(9, 111, 183, 0.5);
+        padding-left: 25px;
+        transform: translateY(0);
+    }
+
+    .gov-link:after {
+        display: none;
     }
 
     .gov-link-text {
@@ -1008,25 +947,38 @@ body.pagelayout-login {
 
 @media (max-width: 767px) {
     .gov-navbar-top {
-        height: 32px;
+        height: 45px;
+        animation: mobile-navbar-reveal 0.5s ease-out forwards;
+    }
+
+    @keyframes mobile-navbar-reveal {
+        0% { height: 38px; opacity: 0.8; }
+        100% { height: 45px; opacity: 1; }
     }
 
     .gov-logo {
-        height: 22px;
-        margin-top: 5px;
+        height: 32px;
+        margin: 6px 0;
+        animation: mobile-logo-reveal 0.6s ease-out forwards;
+    }
+
+    @keyframes mobile-logo-reveal {
+        0% { transform: scale(0.8); opacity: 0; }
+        70% { transform: scale(1.1); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
     }
 
     .gov-logo img {
-        height: 22px;
+        height: 30px;
     }
 
     .gov-navbar-menu {
-        min-height: 46px;
+        min-height: 50px;
     }
 
     .gov-link {
         font-size: 14px;
-        padding: 10px 15px;
+        padding: 12px 16px;
     }
 
     .loginform {
@@ -1043,7 +995,7 @@ body.pagelayout-login {
     }
 
     .navbar.fixed-top {
-        top: 78px !important;
+        top: 95px !important;
     }
 }
 
@@ -1062,7 +1014,7 @@ body.pagelayout-login {
 
     .gov-link {
         font-size: 13px;
-        padding: 10px 15px;
+        padding: 10px 16px;
     }
 
     body:not(.pagelayout-login) {
@@ -1070,11 +1022,11 @@ body.pagelayout-login {
     }
 
     .navbar.fixed-top {
-        top: 70px !important;
+        top: 95px !important;
     }
     
     body:not(.focusmode) .navbar:not(.fm-navbar) {
-        top: 70px !important;
+        top: 95px !important;
         transition: all 0.5s ease;
     }
 }
@@ -1146,12 +1098,6 @@ div.navbar.fixed-top {
     top: 90px !important;
 }
 
-.drawer-toggles .drawer-toggler {
-    position: fixed;
-    top: calc(120px + 0.7rem);
-    z-index: 2;
-}
-
 section#region-main .maincalendar td.today span.day-number-circle, aside:not(#block-region-side-pre) .maincalendar td.today span.day-number-circle {
     border-radius: 5px;
     color: #fff;
@@ -1204,6 +1150,13 @@ section#region-main .maincalendar td.today span.day-number-circle, aside:not(#bl
     .drawer-right.show.d-print-none {
         top: 18%;
         height: calc(100vh - (100vh * 0.18));
+        overflow-y: auto; /* Aquí es donde se maneja todo el scroll */
+    }
+}
+@media (min-width: 1024px) {
+    .drawer-left, .drawer-right {
+        top: 18% !important;
+        height: calc(100vh - (100vh * 0.18)) !important;
         overflow-y: auto; /* Aquí es donde se maneja todo el scroll */
     }
 }
