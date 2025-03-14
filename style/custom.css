@@ -912,3 +912,20 @@ a {
 div.navbar.fixed-top {
     top: 90px !important;
 }
+
+
+
+
+
+.drawer-toggles .drawer-toggler {
+    position: fixed;
+    top: calc(170px + 0.7rem);
+    z-index: 2;
+}
+
+@media (min-width: 1024px) {
+    .drawer-left, .drawer-right {
+        top: 18%;
+        height: calc(100vh - 80px);
+    }
+}
