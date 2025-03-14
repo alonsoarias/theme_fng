@@ -26,7 +26,7 @@
     This template renders the top navbar.
 }}
 
-<!-- Navbar de Gobierno - Implementación corregida -->
+<!-- Navbar de Gobierno - Implementación optimizada -->
 <div class="gov-navbar fixed-top">
     <!-- Barra superior azul con logo -->
     <div class="gov-navbar-top">
@@ -47,15 +47,13 @@
         <div class="container position-relative">
             <button class="gov-menu-toggle navbar-toggler" 
                     type="button" 
-                    data-toggle="collapse" 
-                    data-target="#govMenu"
                     aria-controls="govMenu" 
                     aria-expanded="false"
                     aria-label="{{#str}}togglemenu, theme_fng{{/str}}">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <ul class="gov-menu collapse navbar-collapse" id="govMenu">
+            <ul class="gov-menu" id="govMenu">
                 <li class="gov-menu-item nav-item">
                     <a href="https://www.fng.gov.co/transparencia" 
                        class="gov-link nav-link" 
@@ -198,3 +196,30 @@
 {{/show_license_notice}}
 
 {{> theme_remui/primary-drawer-mobile }}
+
+{{#js}}
+require(['jquery'], function($) {
+    $(document).ready(function() {
+        // Función para cerrar menú al hacer clic fuera
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.gov-navbar-menu').length) {
+                $('#govMenu').removeClass('show');
+            }
+        });
+        
+        // Manejar toggle del menú de gobierno
+        $('.gov-menu-toggle').on('click', function() {
+            $('#govMenu').toggleClass('show');
+            var expanded = $('#govMenu').hasClass('show');
+            $(this).attr('aria-expanded', expanded);
+        });
+        
+        // Mejorar la accesibilidad en links
+        $('.gov-link').on('focus', function() {
+            $(this).addClass('focus');
+        }).on('blur', function() {
+            $(this).removeClass('focus');
+        });
+    });
+});
+{{/js}}
