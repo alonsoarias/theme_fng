@@ -156,11 +156,11 @@ if ($ADMIN->fulltree) {
        ========================================================================= */
     $page = new admin_settingpage('theme_fng_login', get_string('loginsettings', 'theme_fng'));
 
-    // Carousel Settings
+    // Configuración de Carrusel en Login
     $page->add(new admin_setting_heading(
         'theme_fng_carousel',
         get_string('carouselsettings', 'theme_fng'),
-        ''
+        get_string('carouselsettings_desc', 'theme_fng')
     ));
 
     // Número de slides
@@ -177,16 +177,10 @@ if ($ADMIN->fulltree) {
         $page->add(new admin_setting_heading(
             'theme_fng/slideheading' . $i,
             get_string('slideheading', 'theme_fng', $i),
-            ''
+            get_string('slideheading_desc', 'theme_fng', $i)
         ));
         
-        // Título del slide
-        $name = 'theme_fng/fng_slidetitle' . $i;
-        $title = get_string('slidetitle', 'theme_fng', $i);
-        $description = get_string('slidetitledesc', 'theme_fng', $i);
-        $page->add(new admin_setting_configtext($name, $title, $description, ''));
-
-        // Imagen del slide
+        // Imagen del slide (obligatoria)
         $name = 'theme_fng/fng_slideimage' . $i;
         $title = get_string('slideimage', 'theme_fng', $i);
         $description = get_string('slideimage_desc', 'theme_fng', $i);
@@ -196,8 +190,28 @@ if ($ADMIN->fulltree) {
         ]);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $page->add($setting);
-
-        // URL del slide
+        
+        // Mostrar título del slide (opcional)
+        $name = 'theme_fng/fng_slideshowtitle' . $i;
+        $title = get_string('slideshowtitle', 'theme_fng', $i);
+        $description = get_string('slideshowtitle_desc', 'theme_fng', $i);
+        $default = 0;
+        $page->add(new admin_setting_configcheckbox($name, $title, $description, $default));
+        
+        // Título del slide (solo se usará si se activa la opción anterior)
+        $name = 'theme_fng/fng_slidetitle' . $i;
+        $title = get_string('slidetitle', 'theme_fng', $i);
+        $description = get_string('slidetitledesc', 'theme_fng', $i);
+        $page->add(new admin_setting_configtext($name, $title, $description, ''));
+        
+        // Usar enlace en el slide (opcional)
+        $name = 'theme_fng/fng_slideenableurl' . $i;
+        $title = get_string('slideenableurl', 'theme_fng', $i);
+        $description = get_string('slideenableurl_desc', 'theme_fng', $i);
+        $default = 0;
+        $page->add(new admin_setting_configcheckbox($name, $title, $description, $default));
+        
+        // URL del slide (solo se usará si se activa la opción anterior)
         $name = 'theme_fng/fng_slideurl' . $i;
         $title = get_string('slideurl', 'theme_fng', $i);
         $description = get_string('slideurldesc', 'theme_fng', $i);
