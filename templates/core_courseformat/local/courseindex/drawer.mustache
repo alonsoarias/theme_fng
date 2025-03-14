@@ -1,20 +1,20 @@
 {{!
-    @template core_courseformat/local/courseindex/drawer
+  @template core_courseformat/local/courseindex/drawer
 
-    This template renders the course index drawer.
-    Adaptado para theme compecer (child theme de Boost).
-    
-    Example context (json):
-    {}
+  This template renders the course index drawer.
+  Adaptado para theme_fng.
+  
+  Example context (json):
+  {}
 }}
-<nav id="courseindex" class="course-index-drawer">
-  <div class="mb-4">
-    <span class="course-heading font-weight-bold" title="{{#str}}sidebarcoursemenuheading, theme_compecer{{/str}}">
-      {{#str}}sidebarcoursemenuheading, theme_compecer{{/str}}
-    </span>
+<nav id="courseindex" class="courseindex">
+  <div class="p-mb-4">
+      <span class="course-heading h-bold-4" title="{{#str}}sidebarcoursemenuheading, theme_fng{{/str}}">
+          {{#str}}sidebarcoursemenuheading, theme_fng{{/str}}
+      </span>
   </div>
   <div id="courseindex-content">
-    {{> core_courseformat/local/courseindex/placeholders}}
+      {{> core_courseformat/local/courseindex/placeholders}}
   </div>
 </nav>
 {{#js}}
