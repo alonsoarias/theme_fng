@@ -41,7 +41,7 @@ div#navbarmenutopic {
 }
 
 #top-footer {
-    background-color: $color-primary; /* Azul oscuro FNG */
+    background-color: $color-primary; /* Azul oscuro */
     color: $color-white;
     margin: 0 -15px;
 }
@@ -66,13 +66,13 @@ div#navbarmenutopic {
 }
 
 .btn-link {
-    color: $fng-blue-medium; /* Azul medio */
+    color: $color-secondary; /* Azul oscuro */
     border-color: $color-primary;
 }
 
 .btn-link:hover {
-    color: $color-primary; /* Azul oscuro */
-    border-color: $fng-red;
+    color: $color-primary; /* Rojo */
+    border-color: $color-secondary;
 }
 
 .btn-outline-primary {
@@ -96,7 +96,7 @@ div#navbarmenutopic {
 }
 
 .badge-info {
-    background-color: $fng-blue-medium;
+    background-color: $purple;
 }
 
 .badge-info:hover {
@@ -105,11 +105,11 @@ div#navbarmenutopic {
 }
 
 .badge-success {
-    background-color: $fng-orange;
+    background-color: $green;
 }
 
 .badge-succes:hover {
-    background-color: darken($fng-orange, 10%);
+    background-color: darken($green, 10%);
 }
 
 /* List and Link Styles */
@@ -154,7 +154,7 @@ div#navbarmenutopic {
 }
 
 .form-autocomplete-suggestions li:hover {
-    background-color: $color-primary; /* Azul oscuro FNG */
+    background-color: $color-primary; /* Cambiado a $color-primary según botón */
     color: $color-white;
     border-left: 4px solid $color-primary;
 }
@@ -181,7 +181,7 @@ div#navbarmenutopic {
         content: '';
         display: block;
         border-top: 8px solid transparent;
-        border-left: 10px solid $color-primary; /* Azul oscuro FNG */
+        border-left: 10px solid $color-primary; /* Reemplazado con $color-primary */
         border-bottom: 8px solid transparent;
         position: absolute;
         top: 50%;
@@ -276,8 +276,8 @@ div#navbarmenutopic {
 
 /* Primary button styling */
 .btn-primary {
-    background-color: $fng-red; // Rojo para el fondo
-    border-color: $fng-red; // Rojo para el borde
+    background-color: $color-secondary; // Rojo para el fondo
+    border-color: $color-secondary; // Rojo para el borde
     color: #ffffff; // Blanco para el texto
 
     .fa,
@@ -295,8 +295,8 @@ div#navbarmenutopic {
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: $fng-red; // Rojo en activo
-        border-color: $fng-red; // Rojo en activo
+        background-color: $color-secondary; // Rojo en activo
+        border-color: $color-secondary; // Rojo en activo
         color: #ffffff; // Blanco en activo
     }
 
@@ -320,8 +320,8 @@ div#navbarmenutopic {
     }
 
     &:hover {
-        background-color: $color-secondary; // Naranja en hover
-        border-color: $color-secondary; // Naranja en hover
+        background-color: $color-secondary; // Rojo en hover
+        border-color: $color-secondary; // Rojo en hover
         color: #ffffff; // Blanco para el texto en hover
     }
 
@@ -336,20 +336,20 @@ div#navbarmenutopic {
 
     &:not(:disabled):not(.disabled):focus,
     &:not(:disabled):not(.disabled).focus {
-        background-color: $color-secondary; // Naranja en foco
-        border-color: $color-secondary; // Naranja en foco
+        background-color: $color-secondary; // Rojo en foco
+        border-color: $color-secondary; // Rojo en foco
         color: #ffffff; // Blanco en foco
     }
 }
 
 /* Botones Específicos */
 button.btn.btn-primary.icon-no-margin.p-0 {
-    background-color: $fng-red; // Rojo para el fondo
+    background-color: $color-secondary; // Rojo para el fondo
     border-color: white; // Color blanco para el borde
     color: white; // Color del texto
 
     &:hover {
-        background-color: $fng-red; // Rojo para el fondo en hover
+        background-color: $color-secondary; // Rojo para el fondo en hover
         border-color: white; // Mantiene el borde blanco en hover
         color: white !important; // Color del texto en hover
     }
@@ -358,7 +358,7 @@ button.btn.btn-primary.icon-no-margin.p-0 {
     &:not(:disabled):not(.disabled).active,
     &:not(:disabled):not(.disabled):active:focus,
     .show > &.dropdown-toggle {
-        background-color: darken($fng-red, 10%); // Oscurece el color secundario para el estado activo
+        background-color: darken($color-secondary, 10%); // Oscurece el color secundario para el estado activo
         border-color: white; // Mantiene el borde blanco para el estado activo
         color: white; // Mantiene el texto blanco para mejor visibilidad
 
@@ -389,11 +389,11 @@ button.btn.btn-primary.icon-no-margin.p-0 {
 }
 
 .block_calendar_upcoming .event.my-event-urgent {
-    border-color: $fng-red;
+    border-color: #f51f25;
 }
 
 .block_calendar_upcoming .event.my-event-priority {
-    border-color: $fng-orange;
+    border-color: #f89406;
 }
 
 /* END Personalizaciones Próximos Eventos */
@@ -606,7 +606,6 @@ span.badge.bg-secondary.text-dark {
 .login-logo img.mb-3.img-fluid {
     width: 50%;
 }
-
 /*20250303*/
 /*NAVBAR DE GOBIERNO*/
 /* 
@@ -873,185 +872,4 @@ html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
 /* Estilo inline para máxima especificidad */
 div.navbar.fixed-top {
     top: 90px !important; /* Actualizado de 76px a 90px */
-}
-
-/* Estilos mejorados para el formulario de login - Fondo Nacional de Garantías */
-.loginform {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    padding: 30px;
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto;
-    transition: all 0.3s ease;
-}
-
-.loginform:hover {
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-}
-
-.login-logo {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.login-logo img {
-    max-width: 200px;
-    height: auto;
-}
-
-.login-welcome-wrapper {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.login-welcome-wrapper h2 {
-    color: var(--color-primary, #045091);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.login-welcome-wrapper p {
-    color: #666;
-    font-size: 0.95rem;
-}
-
-.login-form-username,
-.login-form-password {
-    margin-bottom: 20px;
-}
-
-.login-form-username label,
-.login-form-password label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #555;
-}
-
-.login-form-username input,
-.login-form-password input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.login-form-username input:focus,
-.login-form-password input:focus {
-    border-color: var(--color-primary, #045091);
-    box-shadow: 0 0 0 3px rgba(4, 80, 145, 0.1);
-    outline: none;
-}
-
-.login-form-forgotpassword {
-    text-align: right;
-    margin-bottom: 25px;
-}
-
-.login-form-forgotpassword a {
-    color: var(--color-primary, #045091);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-.login-form-forgotpassword a:hover {
-    color: var(--color-secondary, #F6B215);
-    text-decoration: underline;
-}
-
-.login-form-submit {
-    margin-top: 15px;
-}
-
-.login-form-submit button {
-    background-color: var(--color-primary, #045091);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.login-form-submit button:hover {
-    background-color: var(--color-secondary, #F6B215);
-}
-
-/* Estilos para errores */
-.alert-danger {
-    background-color: #fff2f2;
-    border-left: 4px solid #E20E17;
-    color: #E20E17;
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-/* Estilos para el contenedor del carrusel */
-.carousel-indicators {
-    bottom: 40px;
-}
-
-.carousel-indicators li {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    margin: 0 5px;
-}
-
-.carousel-indicators li.active {
-    background-color: #FFFFFF;
-}
-
-.carousel-caption {
-    background-color: rgba(4, 80, 145, 0.7);
-    border-radius: 8px;
-    padding: 15px 20px;
-    max-width: 80%;
-    margin: 0 auto;
-    bottom: 80px;
-}
-
-.carousel-caption h5 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .loginform {
-        padding: 20px;
-        margin: 20px;
-    }
-    
-    .login-wrapper {
-        margin: 5%;
-    }
-    
-    .carousel-caption {
-        bottom: 40px;
-        padding: 10px 15px;
-    }
-}
-
-/* Marca de agua FNG */
-.login-col::after {
-    content: "Fondo Nacional de Garantías";
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    font-size: 12px;
-    color: #999;
-    opacity: 0.7;
 }
