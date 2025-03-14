@@ -924,8 +924,110 @@ div.navbar.fixed-top {
 }
 
 @media (min-width: 1024px) {
-    .drawer-left, .drawer-right {
-        top: 18%;
-        height: calc(100vh - 80px);
+    .drawer-right.show.d-print-none {
+      top: 18%;
+      height: calc(100vh - 80px); /* Ajusta a tu gusto */
+      overflow-y: auto;           /* Permite el scroll en Y */
     }
+  }
+  
+
+#page.drawers .main-inner {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+section#region-main .maincalendar td.today span.day-number-circle, aside:not(#block-region-side-pre) .maincalendar td.today span.day-number-circle {
+    border-radius: 5px;
+    color: #fff;
+    background-color: #03355f;
+    box-shadow: 0 6px 12px rgb(0 81 249 / .21);
+}
+.maincalendar .calendarmonth td.today .day-number-circle {
+    color: #FFF;
+    background-color: #045091;
+}
+.maincalendar .calendarmonth td.today .day-number-circle {
+    color: #fff;
+    background-color: #03355f;
+}
+
+
+
+/* ===================== */
+/*   ESTILOS UNIFICADOS  */
+/* ===================== */
+
+/* -- Estilos base del cajón -- */
+.drawer {
+    background-color: #fff;
+    z-index: 1015;
+    position: fixed;
+    height: 100vh;      /* Ocupa toda la pantalla */
+    top: 0;             /* Empezando en la parte superior */
+    filter: drop-shadow(0 13px 37px rgb(92 107 121 / 0.1));
+}
+
+.drawer.drawer-right {
+    transition: right 0.2s ease, 
+                top 0.2s ease, 
+                bottom 0.2s ease, 
+                visibility 0.2s ease, 
+                transform 0.5s ease;
+    width: 372px;        /* Ajusta el ancho a tu gusto */
+    max-width: 372px;
+    right: calc(-372px + -10px);
+    visibility: hidden;  /* Por defecto oculto */
+}
+
+/* Cuando se muestra el drawer */
+.drawer.drawer-right.show {
+    right: 0;
+    visibility: visible;
+}
+
+/* -- Ajustes para pantallas anchas -- */
+@media (min-width: 1024px) {
+    .drawer-right.show.d-print-none {
+        /* Si prefieres usar px (por ejemplo 80px) */
+        top: 18%;
+        height: calc(100vh - (100vh * 0.18));
+
+        /* Si prefieres un % en lugar de px, usa top: 18% y 
+           height: calc(100vh - (100vh * 0.18)) o algo similar. */
+
+        overflow-y: auto; /* Aquí es donde se maneja todo el scroll */
+    }
+
+    /* Si tenías otra regla .drawer-left, .drawer-right { top:80px; ... } 
+       que te generaba conflictos, coméntala o bórrala para que no pise estos estilos. */
+}
+
+/* -- Cabecera del cajón -- */
+.drawer.drawer-right .drawerheader {
+    justify-content: flex-end;
+    padding: 24px;
+}
+
+.drawerheader {
+    padding: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* -- Contenido del cajón --
+   Aquí quitamos o comentamos el overflow para evitar doble scroll */
+.drawercontent {
+    position: relative;
+    /* z-index: -1;  <-- Generalmente no conviene que sea -1, puede ocultar contenido */
+    /* height: calc(100% - 80px); <-- Comentado para que no limite la altura interna */
+    /* overflow-y: auto;          <-- Comentado para que no haya doble scroll */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    /* Opcional: estilos de la scrollbar nativa en Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
 }
