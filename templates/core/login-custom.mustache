@@ -13,12 +13,14 @@
     
     You should have received a copy of the GNU General Public License
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    Theme FNG - Fondo Nacional de Garantías
+    Desarrollado por IngeWeb - www.ingeweb.co
 }}
 
 {{> theme_fng/head }}
 
 <style>
-/* Estilos para hacer fija la columna del carrusel y desplazar la columna del login. */
 @media (min-width: 768px) {
     .fixed-carousel-col {
         position: fixed;
@@ -26,7 +28,7 @@
         left: 0;
         width: 66.6667%;
         height: 100vh;
-        overflow: hidden; /* Evita scroll interno */
+        overflow: hidden;
     }
     .login-col {
         margin-left: 66.6667%;
@@ -65,15 +67,21 @@
                     <div class="carousel-inner">
                         {{#carouselimages}}
                         <div class="carousel-item {{#first}}active{{/first}}" aria-label="{{title}}">
+                            {{#has_link}}
                             <a href="{{link}}" target="_blank">
+                            {{/has_link}}
                                 <img src="{{url}}" alt="{{title}}"
                                      class="d-block vh-100"
                                      style="object-fit: cover; border-radius: 0;">
+                                
+                                {{#has_title}}
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{title}}</h5>
-                                    <p>{{description}}</p>
                                 </div>
+                                {{/has_title}}
+                            {{#has_link}}
                             </a>
+                            {{/has_link}}
                         </div>
                         {{/carouselimages}}
                     </div>
@@ -127,21 +135,21 @@
             </div>
         </div>
 
-        <!-- Scripts Bootstrap (ej. 4.5.2) y jQuery si no se cargan en otro sitio -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Inicializar el carrusel con el intervalo configurado
-                $('#loginCarousel').carousel({
-                    interval: {{carouselinterval}}
-                });
-            });
-        </script>
-
         <div class="d-none">
             {{{ output.standard_footer_html }}}
             {{{ output.standard_end_of_body_html }}}
         </div>
     </section>
+    
+    <!-- Scripts Bootstrap y jQuery si no se cargan en otro sitio -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inicializar el carrusel con el intervalo configurado
+            $('#loginCarousel').carousel({
+                interval: {{carouselinterval}}
+            });
+        });
+    </script>
 </body>
