@@ -22,13 +22,25 @@
                     <!-- Diapositivas -->
                     <div class="carousel-inner">
                         {{#carouselimages}}
-                        <div class="carousel-item {{#first}}active{{/first}}" aria-label="{{#title}}{{title}}{{/title}}{{^title}}Slide {{index}}{{/title}}">
+                        <div class="carousel-item {{#first}}active{{/first}}
+                             " data-slide-index="{{index}}"
+                             aria-label="{{#title}}{{title}}{{/title}}{{^title}}Slide {{index}}{{/title}}">
+                            
                             {{#has_link}}
-                            <a href="{{link}}" target="_blank" class="slide-link">
+                            <a href="{{link}}" target="_blank" class="slide-link" 
+                               aria-label="{{#title}}{{title}} - Abrir enlace{{/title}}{{^title}}Slide {{index}} - Abrir enlace{{/title}}">
                             {{/has_link}}
-                                <img src="{{url}}" alt="{{#title}}{{title}}{{/title}}{{^title}}Slide {{index}}{{/title}}"
+                                
+                                <img src="{{url}}" 
+                                     alt="{{#title}}{{title}}{{/title}}{{^title}}Slide {{index}}{{/title}}"
                                      class="d-block vh-100"
                                      style="object-fit: cover; border-radius: 0;">
+                                
+                                {{#has_title}}
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h3>{{title}}</h3>
+                                </div>
+                                {{/has_title}}
                                 
                             {{#has_link}}
                             </a>
