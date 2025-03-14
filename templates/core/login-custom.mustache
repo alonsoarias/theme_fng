@@ -5,26 +5,6 @@
 
 {{> theme_fng/head }}
 
-<style>
-/* Estilos para hacer fija la columna del carrusel y desplazar la columna del login. */
-@media (min-width: 768px) {
-    .fixed-carousel-col {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 66.6667%;
-        height: 100vh;
-        overflow: hidden; /* Evita scroll interno */
-    }
-    .login-col {
-        margin-left: 66.6667%;
-        min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-}
-</style>
-
 <body {{{ bodyattributes }}} style="{{loginbackground}}">
     {{> core/local/toast/wrapper}}
     {{{ output.standard_top_of_body_html }}}
@@ -39,34 +19,26 @@
                      data-interval="{{carouselinterval}}"
                      aria-label="{{#str}}carousel, theme_fng{{/str}}">
 
-                    <!-- Indicadores (puntos) -->
-                    <ol class="carousel-indicators">
-                        {{#carouselimages}}
-                        <li data-target="#loginCarousel"
-                            data-slide-to="{{index}}"
-                            class="{{#first}}active{{/first}}">
-                        </li>
-                        {{/carouselimages}}
-                    </ol>
-
                     <!-- Diapositivas -->
                     <div class="carousel-inner">
                         {{#carouselimages}}
-                        <div class="carousel-item {{#first}}active{{/first}}" aria-label="{{title}}">
-                            <a href="{{link}}" target="_blank">
-                                <img src="{{url}}" alt="{{title}}"
+                        <div class="carousel-item {{#first}}active{{/first}}" aria-label="{{#title}}{{title}}{{/title}}{{^title}}Slide {{index}}{{/title}}">
+                            {{#has_link}}
+                            <a href="{{link}}" target="_blank" class="slide-link">
+                            {{/has_link}}
+                                <img src="{{url}}" alt="{{#title}}{{title}}{{/title}}{{^title}}Slide {{index}}{{/title}}"
                                      class="d-block vh-100"
                                      style="object-fit: cover; border-radius: 0;">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{title}}</h5>
-                                    <p>{{description}}</p>
-                                </div>
+                                
+                            {{#has_link}}
                             </a>
+                            {{/has_link}}
                         </div>
                         {{/carouselimages}}
                     </div>
 
                     <!-- Controles Prev/Next -->
+                    {{#multiple_slides}}
                     <a class="carousel-control-prev"
                        href="#loginCarousel"
                        role="button"
@@ -83,6 +55,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">{{#str}}next, theme_fng{{/str}}</span>
                     </a>
+                    {{/multiple_slides}}
                 </div>
             </div>
 
@@ -115,21 +88,20 @@
             </div>
         </div>
 
-        <!-- Scripts Bootstrap (ej. 4.5.2) y jQuery si no se cargan en otro sitio -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                // Inicializar el carrusel con el intervalo configurado
-                $('#loginCarousel').carousel({
-                    interval: {{carouselinterval}}
-                });
-            });
-        </script>
-
         <div class="d-none">
             {{{ output.standard_footer_html }}}
             {{{ output.standard_end_of_body_html }}}
         </div>
     </section>
+    
+    <script>
+    require(['jquery', 'core/bootstrap'], function($) {
+        $(document).ready(function() {
+            // Inicializar el carrusel con el intervalo configurado
+            $('#loginCarousel').carousel({
+                interval: {{carouselinterval}}
+            });
+        });
+    });
+    </script>
 </body>
