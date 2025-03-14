@@ -10,11 +10,6 @@
    1. ESTILOS GENERALES Y LAYOUT
    ============================================================================= */
 
-/* Ajustes para el body */
-body {
-    padding-top: 162px !important; /* Actualizado a 162px (90px + altura del navbar de Moodle) */
-}
-
 /* Posiciones y dimensiones generales */
 #page-header.hasbackground.design-1 {
     min-height: 270px !important;
@@ -38,7 +33,7 @@ div#navbarmenutopic {
     height: 80px !important;
 }
 
-/* Navbar de Gobierno (GOV.CO) */
+/* Navbar de Gobierno (GOV.CO) - ACTUALIZADO */
 .gov-navbar {
     position: fixed;
     top: 0;
@@ -48,11 +43,11 @@ div#navbarmenutopic {
     font-family: 'Work Sans', sans-serif;
     width: 100%;
     height: auto;
-    transition: height 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .gov-navbar-top {
-    background-color: $fng-blue-dark;
+    background-color: #045091;
     height: 38px;
     display: flex;
     align-items: center;
@@ -60,7 +55,7 @@ div#navbarmenutopic {
 
 .gov-logo {
     height: 30px;
-    margin-top: 4px;
+    margin: 4px 0;
 }
 
 .gov-logo img {
@@ -69,14 +64,14 @@ div#navbarmenutopic {
 }
 
 .gov-navbar-menu {
-    background: darken($fng-blue-dark, 10%);
+    background: #033968;
     min-height: 52px;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-/* Estilos del menú de gobierno */
+/* Estilos del menú de gobierno - MEJORADOS */
 .gov-menu {
     display: flex;
     list-style: none;
@@ -103,7 +98,7 @@ div#navbarmenutopic {
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 12px 15px;
+    padding: 14px 15px;
     transition: all 0.3s ease;
     border-radius: 4px;
 }
@@ -113,7 +108,7 @@ div#navbarmenutopic {
 .gov-link:active {
     color: #FFFFFF;
     text-decoration: none;
-    background: $fng-blue-medium;
+    background: #096FB7;
     outline: none;
     box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
 }
@@ -121,10 +116,10 @@ div#navbarmenutopic {
 .gov-link i {
     margin-left: 8px;
     font-size: 18px;
-    color: $fng-yellow;
+    color: #FEEB17;
 }
 
-/* Botón hamburguesa para móviles */
+/* Botón hamburguesa para móviles - MEJORADO */
 .gov-menu-toggle {
     display: none;
     background: none;
@@ -136,121 +131,22 @@ div#navbarmenutopic {
     top: 50%;
     transform: translateY(-50%);
     z-index: 1032;
+    cursor: pointer;
 }
 
 .gov-menu-toggle .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Media queries para responsive */
-@media (max-width: 991px) {
-    .gov-menu-toggle {
-        display: block;
-    }
-
-    .gov-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: darken($fng-blue-dark, 12%);
-        padding: 10px 0;
-        flex-direction: column;
-    }
-
-    .gov-menu.show {
-        display: flex;
-    }
-
-    .gov-menu-item {
-        margin: 0;
-        width: 100%;
-    }
-
-    .gov-link {
-        padding: 12px 20px;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .gov-link-text {
-        flex: 1;
-        margin-right: 10px;
-    }
-
-    body {
-        padding-top: 120px !important;
-    }
-
-    .navbar.fixed-top {
-        top: 90px !important;
-    }
+.gov-menu.show {
+    display: flex !important;
 }
 
-@media (max-width: 767px) {
-    .gov-navbar-top {
-        height: 36px;
-    }
-
-    .gov-logo {
-        height: 24px;
-        margin-top: 6px;
-    }
-
-    .gov-logo img {
-        height: 24px;
-    }
-
-    .gov-navbar-menu {
-        min-height: 48px;
-    }
-
-    .gov-link {
-        font-size: 14px;
-        padding: 10px 15px;
-    }
-
-    body {
-        padding-top: 110px !important;
-    }
-
-    .navbar.fixed-top {
-        top: 84px !important;
-    }
-}
-
-@media (max-width: 576px) {
-    .gov-navbar {
-        height: auto;
-    }
-
-    .gov-navbar-menu {
-        padding: 8px 0;
-    }
-
-    .gov-menu-toggle {
-        right: 10px;
-    }
-
-    .gov-link {
-        font-size: 13px;
-        padding: 10px 15px;
-    }
-
-    body {
-        padding-top: 100px !important;
-    }
-
-    .navbar.fixed-top {
-        top: 80px !important;
-    }
-}
-
-/* Ajustes para el navbar de Moodle */
+/* Ajustes para el navbar de Moodle - CORREGIDOS */
 .navbar.fixed-top {
     top: 90px !important;
     position: fixed !important;
+    z-index: 1030;
 }
 
 html body:not(.focusmode) div.navbar.fixed-top:not(.fm-navbar) {
@@ -715,21 +611,24 @@ span.badge.bg-secondary.text-dark {
     margin: 10%;
 }
 
-/* Layout de columnas en login */
+/* Layout de columnas en login - ACTUALIZADO */
 @media (min-width: 768px) {
     .fixed-carousel-col {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 66.6667%;
         height: 100vh;
         overflow: hidden;
     }
+    
     .login-col {
-        margin-left: 66.6667%;
         min-height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .login-wrapper {
+        width: 90%;
+        max-width: 400px;
     }
 }
 
@@ -825,21 +724,92 @@ span.badge.bg-secondary.text-dark {
 }
 
 /* =============================================================================
-   8. MEDIA QUERIES GENERALES
+   8. MEDIA QUERIES GENERALES - ACTUALIZADAS
    ============================================================================= */
 
-@media (min-width: 576px) {
-    body:not(.focusmode) .navbar:not(.fm-navbar) {
-        top: 90px !important;
-        transition: all 0.5s ease;
-    }
-    
-    html body.focusmode .navbar.fm-navbar {
-        top: 0 !important;
+/* Para sitios distintos a login */
+body:not(.pagelayout-login) {
+    padding-top: 122px !important; /* Valor base */
+}
+
+/* Para la página de login */
+body.pagelayout-login {
+    padding-top: 0 !important;
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    body:not(.pagelayout-login) {
+        padding-top: 142px !important;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 991px) {
+    .gov-menu-toggle {
+        display: block;
+    }
+
+    .gov-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #033968;
+        padding: 0;
+        flex-direction: column;
+        z-index: 1032;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    }
+
+    .gov-menu-item {
+        margin: 0;
+        width: 100%;
+    }
+
+    .gov-link {
+        padding: 12px 20px;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .gov-link-text {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    body:not(.pagelayout-login) {
+        padding-top: 132px !important;
+    }
+
+    .navbar.fixed-top {
+        top: 80px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .gov-navbar-top {
+        height: 32px;
+    }
+
+    .gov-logo {
+        height: 22px;
+        margin-top: 5px;
+    }
+
+    .gov-logo img {
+        height: 22px;
+    }
+
+    .gov-navbar-menu {
+        min-height: 46px;
+    }
+
+    .gov-link {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
     .loginform {
         margin: 1rem;
         padding: 1rem;
@@ -848,12 +818,56 @@ span.badge.bg-secondary.text-dark {
     .loginform .login-logo img {
         max-width: 150px;
     }
+
+    body:not(.pagelayout-login) {
+        padding-top: 122px !important;
+    }
+
+    .navbar.fixed-top {
+        top: 78px !important;
+    }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 576px) {
+    .gov-navbar {
+        height: auto;
+    }
+
+    .gov-navbar-menu {
+        padding: 8px 0;
+    }
+
+    .gov-menu-toggle {
+        right: 10px;
+    }
+
+    .gov-link {
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+
+    body:not(.pagelayout-login) {
+        padding-top: 112px !important;
+    }
+
+    .navbar.fixed-top {
+        top: 70px !important;
+    }
+    
+    body:not(.focusmode) .navbar:not(.fm-navbar) {
+        top: 70px !important;
+        transition: all 0.5s ease;
+    }
+}
+
+@media (max-width: 480px) {
     .loginform {
-        margin: 5%;
-        padding: 1.5rem;
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .loginform .login-logo img {
+        max-width: 120px;
     }
 }
 
@@ -913,28 +927,10 @@ div.navbar.fixed-top {
     top: 90px !important;
 }
 
-
-
-
-
 .drawer-toggles .drawer-toggler {
     position: fixed;
-    top: calc(170px + 0.7rem);
+    top: calc(120px + 0.7rem);
     z-index: 2;
-}
-
-@media (min-width: 1024px) {
-    .drawer-right.show.d-print-none {
-      top: 18%;
-      height: calc(100vh - 80px); /* Ajusta a tu gusto */
-      overflow-y: auto;           /* Permite el scroll en Y */
-    }
-  }
-  
-
-#page.drawers .main-inner {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
 }
 
 section#region-main .maincalendar td.today span.day-number-circle, aside:not(#block-region-side-pre) .maincalendar td.today span.day-number-circle {
@@ -951,8 +947,6 @@ section#region-main .maincalendar td.today span.day-number-circle, aside:not(#bl
     color: #fff;
     background-color: #03355f;
 }
-
-
 
 /* ===================== */
 /*   ESTILOS UNIFICADOS  */
@@ -989,18 +983,10 @@ section#region-main .maincalendar td.today span.day-number-circle, aside:not(#bl
 /* -- Ajustes para pantallas anchas -- */
 @media (min-width: 1024px) {
     .drawer-right.show.d-print-none {
-        /* Si prefieres usar px (por ejemplo 80px) */
         top: 18%;
         height: calc(100vh - (100vh * 0.18));
-
-        /* Si prefieres un % en lugar de px, usa top: 18% y 
-           height: calc(100vh - (100vh * 0.18)) o algo similar. */
-
         overflow-y: auto; /* Aquí es donde se maneja todo el scroll */
     }
-
-    /* Si tenías otra regla .drawer-left, .drawer-right { top:80px; ... } 
-       que te generaba conflictos, coméntala o bórrala para que no pise estos estilos. */
 }
 
 /* -- Cabecera del cajón -- */
@@ -1020,14 +1006,9 @@ section#region-main .maincalendar td.today span.day-number-circle, aside:not(#bl
    Aquí quitamos o comentamos el overflow para evitar doble scroll */
 .drawercontent {
     position: relative;
-    /* z-index: -1;  <-- Generalmente no conviene que sea -1, puede ocultar contenido */
-    /* height: calc(100% - 80px); <-- Comentado para que no limite la altura interna */
-    /* overflow-y: auto;          <-- Comentado para que no haya doble scroll */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
-    /* Opcional: estilos de la scrollbar nativa en Firefox */
     scrollbar-width: thin;
     scrollbar-color: #d5ddea #f8f9fa;
 }
