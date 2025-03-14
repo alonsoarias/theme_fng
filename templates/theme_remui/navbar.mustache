@@ -48,22 +48,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <ul class="gov-menu">
+                    <!-- Botón hamburguesa para móviles -->
+                    <button class="navbar-toggler gov-menu-toggle d-md-none" type="button" aria-label="Menú de gobierno">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <ul class="gov-menu" id="govMenu">
                         <li class="gov-menu-item">
                             <a href="https://www.fng.gov.co/transparencia" class="gov-link" target="_blank">
-                                Transparencia
+                                <span class="gov-link-text">Transparencia</span>
                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="gov-menu-item">
                             <a href="https://www.fng.gov.co/participa" class="gov-link" target="_blank">
-                                Participa
+                                <span class="gov-link-text">Participa</span>
                                 <i class="fa fa-handshake-o" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li class="gov-menu-item">
                             <a href="https://www.fng.gov.co/atencion-y-servicios" class="gov-link" target="_blank">
-                                Atención y servicios a la ciudadanía
+                                <span class="gov-link-text">Atención y servicios a la ciudadanía</span>
                                 <i class="fa fa-question-circle" aria-hidden="true"></i>
                             </a>
                         </li>
