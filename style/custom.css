@@ -1183,3 +1183,9 @@ section#region-main .maincalendar td.today span.day-number-circle, aside:not(#bl
     scrollbar-width: thin;
     scrollbar-color: #d5ddea #f8f9fa;
 }
+
+
+/*footer*/
+.about-text-content .row.justify-content-between.mb-4 h5.font-weight-bold {
+    color: white;
+}

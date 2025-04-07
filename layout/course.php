@@ -26,7 +26,9 @@ defined('MOODLE_INTERNAL') || die();
 
 global $CFG, $COURSE;
 
-user_preference_allow_ajax_update('enable_focus_mode', PARAM_BOOL);
+if(!apply_latest_user_pref()){
+    user_preference_allow_ajax_update('enable_focus_mode', PARAM_BOOL);
+}
 
 require_once($CFG->dirroot . '/theme/remui/layout/common.php');
 
@@ -49,6 +51,8 @@ $key = array_search('student', array_column($roles, 'shortname'));
 if ($key === false || is_siteadmin()) {
     $templatecontext['notstudent'] = true;
 }
+
+$templatecontext['courseid'] = $COURSE->id;
 
 // Must be called before rendering the template.
 // This will ease us to add body classes directly to the array.
